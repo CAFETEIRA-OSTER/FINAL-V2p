@@ -2,294 +2,145 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QRCoder;
+using pix_payload_generator;
+using pix_payload_generator.net.Models.CobrancaModels;
+using pix_payload_generator.net.Models.PayloadModels;
 
 namespace FINAL_V2.UsuaryControl
 {
     public partial class Vendas : UserControl
     {
+        
+        private List<Produto> produtosCadastrados = new List<Produto>();
+        private decimal somaTotal = 0;
 
-        private decimal preçototal = 0.0m; // Declare como decimal em vez de int
+        public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados, int numeroProdutos)
+        {
+            InitializeComponent();
+            this.somaTotal = somaTotal;
+            this.produtosCadastrados = produtosCadastrados;
 
-        Função fx = new Função();
-        String consulta;
-        DataSet ds;
-        protected Int64 quantidade, novaquantidade;
-        protected int n;
-        String Valorid;
-        int valorpago;
-        protected Int64 numUnit;
-        protected Int64 numValor;
+            // Aqui você pode fazer o que precisa com o número de produtos, se necessário
+        }
 
+        public class Produto
+        {
+            public int Id { get; set; }
+            public string Nome { get; set; }
+            public string Quantidade { get; set; }
+            public decimal Valor { get; set; }
+            public string Tipo { get; set; }
+        }
         public Vendas()
         {
             InitializeComponent();
-           
+        }
 
-            
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void Vendas_Load(object sender, EventArgs e)
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-
-            listBox1.Items.Clear();
-            consulta = "select Nome from Estoque where Quantidade >'0'";
-            ds = fx.GetData(consulta);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            int id;
+            if (e.KeyCode == Keys.Enter && int.TryParse(textBox1.Text, out id))
             {
-                listBox1.Items.Add(ds.Tables[0].Rows[i][0].ToString());
-            }
-        }
+                string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
-
-        
-
-
-        private void D_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (D.Rows[e.RowIndex].Cells[4].Value != null)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    valorpago = int.Parse(D.Rows[e.RowIndex].Cells[4].Value.ToString());
-                }
-
-                if (D.Rows[e.RowIndex].Cells[0].Value != null)
-                {
-                    Valorid = D.Rows[e.RowIndex].Cells[0].Value.ToString();
-                }
-
-                if (D.Rows[e.RowIndex].Cells[3].Value != null)
-                {
-                    numUnit = Int64.Parse(D.Rows[e.RowIndex].Cells[3].Value.ToString());
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
-        private void AdicionarLivroAoDataGridView()
-        {
-            string idLivro = txtIDLivro.Text;
-
-            // Verifique se o produto já está no DataGridView
-            foreach (DataGridViewRow row in D.Rows)
-            {
-                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == idLivro)
-                {
-                    // Produto com o mesmo "lid" encontrado no DataGridView, incremente a quantidade existente
-                    int quantidadeExistente;
-                    if (int.TryParse(row.Cells[2].Value.ToString(), out quantidadeExistente))
+                    try
                     {
-                        // O valor foi analisado com sucesso, agora você pode usá-lo
-                        int novaQuantidade = quantidadeExistente + 1;
+                        connection.Open();
 
-                        // Atualize a quantidade no DataGridView
-                        row.Cells[2].Value = novaQuantidade;
+                        // Consulta SQL para selecionar o produto com base no ID
+                        string query = "SELECT * FROM Estoque WHERE lid = @lid";
 
-                        // Atualize a quantidade total no DataGridView
-                        decimal precoUnitario = decimal.Parse(row.Cells[3].Value.ToString());
-                        decimal novoPrecoTotal = precoUnitario * novaQuantidade;
-                        row.Cells[4].Value = novoPrecoTotal.ToString("0.00"); // Formata para duas casas decimais
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@lid", id);
 
-                        // Atualize a label com o novo total
-                        preçototal += precoUnitario;
-                        Lblpagar.Text = "R$" + preçototal.ToString("0.00"); // Formata para duas casas decimais
+                        SqlDataReader reader = command.ExecuteReader();
 
-                        // Não é necessário atualizar a quantidade no banco de dados neste ponto
-                        return;
-                    }
-                    else
-                    {
-                        // Lidar com o caso em que o valor não é um número válido
-                        MessageBox.Show("A quantidade existente não é um número válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Saia da função para evitar adicionar novamente
-                    }
-                }
-            }
-
-            // Se não encontrou o produto no DataGridView, realize a consulta
-            consulta = "select lid, Nome, Quantidade, Preço from Estoque where lid = '" + idLivro + "'";
-            ds = fx.GetData(consulta);
-
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                int n = D.Rows.Add();
-                D.Rows[n].Cells[0].Value = ds.Tables[0].Rows[0]["lid"].ToString();
-                D.Rows[n].Cells[1].Value = ds.Tables[0].Rows[0]["Nome"].ToString();
-                D.Rows[n].Cells[2].Value = "1"; // Inicializa com 1 unidade
-                D.Rows[n].Cells[3].Value = ds.Tables[0].Rows[0]["Preço"].ToString(); // Preço unitário
-
-                // Atualize a quantidade disponível do livro no banco de dados
-                long novaQuantidade = Int64.Parse(ds.Tables[0].Rows[0]["Quantidade"].ToString()) - 1;
-                consulta = "update Estoque set Quantidade=" + novaQuantidade + " where lid ='" + idLivro + "'";
-                fx.SetData(consulta, "Livro adicionado na compra");
-
-                // Calcula o preço total para a nova linha
-                decimal precoUnitario = decimal.Parse(ds.Tables[0].Rows[0]["Preço"].ToString());
-                decimal precoTotal = precoUnitario * 1; // 1 unidade
-                D.Rows[n].Cells[4].Value = precoTotal.ToString("0.00"); // Formata para duas casas decimais
-
-                // Atualize a label com o novo total
-                preçototal += precoTotal;
-                Lblpagar.Text = "R$" + preçototal.ToString("0.00"); // Formata para duas casas decimais
-            }
-            else
-            {
-                MessageBox.Show("Livro não encontrado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            // Limpe o campo de texto
-            txtIDLivro.Clear();
-        }
-
-
-
-
-
-
-        private void btnLimparCu_Click_1(object sender, EventArgs e)
-        {
-            limpar();
-        }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            txtUnidade.Clear();
-            String nome = listBox1.GetItemText(listBox1.SelectedItem);
-            txtNomeLivro.Text = nome;
-            consulta = "select lid, Preço from Estoque where Nome='" + nome + "'";
-            ds = fx.GetData(consulta);
-            textBox1.Text = ds.Tables[0].Rows[0][0].ToString();
-            txtquantidade.Text = ds.Tables[0].Rows[0][1].ToString();
-        }
-
-
-        
-
-        // ...
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text != "")
-            {
-                consulta = "select Quantidade from Estoque where lid ='" + textBox1.Text + "'";
-                ds = fx.GetData(consulta);
-
-                // Verifique se o DataSet contém pelo menos uma linha.
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    quantidade = Int64.Parse(ds.Tables[0].Rows[0][0].ToString());
-                    decimal precoTotal;
-
-                    if (decimal.TryParse(txtPreçoTotal.Text, out precoTotal) && precoTotal >= 0)
-                    {
-                        novaquantidade = quantidade - Int64.Parse(txtUnidade.Text);
-
-                        if (novaquantidade >= 0)
+                        if (reader.Read())
                         {
-                            n = D.Rows.Add();
-                            D.Rows[n].Cells[0].Value = textBox1.Text;
-                            D.Rows[n].Cells[1].Value = txtNomeLivro.Text;
-                            D.Rows[n].Cells[2].Value = txtquantidade.Text;
-                            D.Rows[n].Cells[3].Value = txtUnidade.Text;
+                            Produto produto = new Produto
+                            {
+                                Id = Convert.ToInt32(reader["lid"]),
+                                Nome = reader["Nome"].ToString(),
+                                Quantidade = "1", // Sempre começa com 1 ao ser adicionado
+                                Valor = Convert.ToDecimal(reader["Preço"]),
+                                Tipo = reader["Tipo"].ToString()
+                            };
 
-                            // Formate o preço total com duas casas decimais
-                            D.Rows[n].Cells[4].Value = precoTotal.ToString("0.00");
+                            // Verifica se o produto já está na lista
+                            Produto produtoExistente = produtosCadastrados.FirstOrDefault(p => p.Id == produto.Id);
+                            if (produtoExistente != null)
+                            {
+                                // Se o produto já existe na lista, incrementa a quantidade e o valor
+                                int quantidadeExistente = Convert.ToInt32(produtoExistente.Quantidade);
+                                produtoExistente.Quantidade = (quantidadeExistente + 1).ToString();
+                                produtoExistente.Valor += produto.Valor;
 
-                            preçototal += precoTotal;
-                            Lblpagar.Text = "R$" + preçototal.ToString("0.00"); // Formate o total como moeda
+                                // Atualiza a linha na grid
+                                int rowIndex = dataGridView1.Rows.Cast<DataGridViewRow>().ToList().FindIndex(r => (int)r.Cells[0].Value == produto.Id);
+                                dataGridView1.Rows[rowIndex].Cells[2].Value = produtoExistente.Quantidade;
 
-                            consulta = "update Estoque set Quantidade=" + novaquantidade + " where lid ='" + textBox1.Text + "'";
+                                // Garanta que o valor seja tratado como decimal aqui
+                                dataGridView1.Rows[rowIndex].Cells[3].Value = (produtoExistente.Valor / 100).ToString("N2");
+                            }
+                            else
+                            {
+                                // Se o produto não existe na lista, adiciona-o
+                                produtosCadastrados.Add(produto);
+                                dataGridView1.Rows.Add(produto.Id, produto.Nome, produto.Quantidade, (produto.Valor / 100).ToString("N2"), produto.Tipo);
+                            }
 
+                            textBox1.Clear(); // Limpa o TextBox após adicionar
+
+                            // Calcula a soma total novamente
+                            somaTotal = produtosCadastrados.Sum(p => p.Valor);
+                            lblSomaTotal.Text = $"R${(somaTotal / 100):F2}"; // Formata a somaTotal como moeda
+                            lblSomaTotal.Font = new Font(lblSomaTotal.Font, FontStyle.Bold);
+                            
+
+
+                            // Opcionalmente, você pode selecionar a última linha no DataGridView para que ela esteja visível
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Livro fora de Estoque. \n Existe somente:" + quantidade + "", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Produto não encontrado.");
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Preço total inválido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ocorreu um erro ao consultar o banco de dados: " + ex.Message);
                     }
                 }
-                else
-                {
-                    // Lide com o caso em que o DataSet está vazio, por exemplo, mostrando uma mensagem de erro.
-                    MessageBox.Show("Não foi possível encontrar informações do livro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Livro não selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void txtUnidade_TextChanged_1(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtUnidade.Text))
-            {
-                if (decimal.TryParse(txtquantidade.Text, out decimal Punit) && decimal.TryParse(txtUnidade.Text, out decimal Nunit))
-                {
-                    decimal Tpagar = (Punit * Nunit) / 100; // Divida por 100 para obter o valor correto em reais
-                    txtPreçoTotal.Text = Tpagar.ToString("0.00"); // Formatar o resultado como moeda (duas casas decimais)
-                }
-                else
-                {
-                    // Lidar com entrada inválida, por exemplo, mostrar uma mensagem de erro
-                    // e limpar o campo txtPreçoTotal.
-                    txtPreçoTotal.Clear();
-                }
-            }
-            else
-            {
-                txtPreçoTotal.Clear();
-            }
-        }
-
-
-        public void limpar()
-        {
-            textBox1.Clear();
-            txtNomeLivro.Clear();
-            txtquantidade.Clear();
-            txtUnidade.Clear();
-            txtPreçoTotal.Clear();
-
-        }
-
-        private void txtIDLivro_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                AdicionarLivroAoDataGridView();
-            }
-        }
-
-        private void Lblpagar_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
 
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode("00020126580014BR.GOV.BCB.PIX0136271aa240-1e82-4e8a-a6f3-5350415eb0d55204000053039865802BR5925Yuri Bernardo Siebeneichl6009SAO PAULO61080540900062240520ekpiML64c4DoBZxmgieb63047AD9", QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            pictureBox1.Image = qrCodeImage;
         }
-
-        private void txtIDLivro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-
-
-
-
-
-
+  
     }
 }
