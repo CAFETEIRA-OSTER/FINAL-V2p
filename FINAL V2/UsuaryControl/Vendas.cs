@@ -18,17 +18,33 @@ namespace FINAL_V2.UsuaryControl
 {
     public partial class Vendas : UserControl
     {
-        
+
+
+        private int valorLabel = 0;
         private List<Produto> produtosCadastrados = new List<Produto>();
         private decimal somaTotal = 0;
+        private decimal somaTotala = 0;
+        private Desconto descontoForm;
+        public decimal DescontoValue { get; set; }
 
-        public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados, int numeroProdutos)
+        public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados)
         {
             InitializeComponent();
             this.somaTotal = somaTotal;
             this.produtosCadastrados = produtosCadastrados;
+            descontoForm = new Desconto();
+            somaTotala = descontoForm.ValorLabel; // Altere para descontoForm.ValorLabel
+            this.KeyUp += Sistema_KeyUp;
+        }
 
-            // Aqui você pode fazer o que precisa com o número de produtos, se necessário
+        private void Sistema_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Verifica se a tecla F1 foi pressionada
+            if (e.KeyCode == Keys.F2)
+            {
+                // Exibe a mensagem desejada
+                MessageBox.Show("Você pressionou a tecla F1!");
+            }
         }
 
         public class Produto
@@ -39,17 +55,8 @@ namespace FINAL_V2.UsuaryControl
             public decimal Valor { get; set; }
             public string Tipo { get; set; }
         }
-        public Vendas()
-        {
-            InitializeComponent();
-        }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        private void textBox1_KeyDown(object sender, KeyEventArgs e) // adicionar intens
         {
             int id;
             if (e.KeyCode == Keys.Enter && int.TryParse(textBox1.Text, out id))
@@ -108,9 +115,9 @@ namespace FINAL_V2.UsuaryControl
 
                             // Calcula a soma total novamente
                             somaTotal = produtosCadastrados.Sum(p => p.Valor);
-                            lblSomaTotal.Text = $"R${(somaTotal / 100):F2}"; // Formata a somaTotal como moeda
-                            lblSomaTotal.Font = new Font(lblSomaTotal.Font, FontStyle.Bold);
-                            
+                            button13.Text = $"R${(somaTotal / 100):F2}"; // Formata a somaTotal como moeda
+
+
 
 
                             // Opcionalmente, você pode selecionar a última linha no DataGridView para que ela esteja visível
@@ -132,7 +139,7 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e) // gerar qr
         {
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
@@ -141,6 +148,54 @@ namespace FINAL_V2.UsuaryControl
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             pictureBox1.Image = qrCodeImage;
         }
-  
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            descontoForm.ShowDialog(); // Abre o formulário Desconto como uma janela de diálogo
+
+        }
+
+
+        private void AtualizarSomaTotala()
+        {
+            somaTotala = descontoForm.ValorLabel;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AtualizarSomaTotala();
+            MessageBox.Show($"Soma Total: {somaTotala:C2}");
+
+        }
+
+
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private string desconto = "";
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel31_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

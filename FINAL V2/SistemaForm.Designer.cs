@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SistemaForm));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -198,6 +199,8 @@
             // 
             // panel3
             // 
+            this.panel3.BackgroundImage = global::FINAL_V2.Properties.Resources.log;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Name = "panel3";
@@ -219,8 +222,10 @@
             this.ClientSize = new System.Drawing.Size(967, 505);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SistemaForm";
             this.Text = "SistemaForm";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SistemaForm_KeyUp);
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.menuStrip2.ResumeLayout(false);

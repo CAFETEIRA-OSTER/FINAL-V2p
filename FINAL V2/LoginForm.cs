@@ -16,8 +16,21 @@ namespace FINAL_V2
         public LoginForm()
         {
             InitializeComponent();
-        }
 
+            this.KeyPreview = true;
+            this.KeyUp += new KeyEventHandler(LoginForm_KeyUp);
+
+
+        }
+        private void LoginForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Verifica se a tecla F1 foi pressionada
+            if (e.KeyCode == Keys.F2)
+            {
+                // Exibe a mensagem desejada
+                MessageBox.Show("Você pressionou a tecla F1!");
+            }// Lógica a ser executada quando uma tecla é liberada no formulário
+        }
         private void LoginForm_Load(object sender, EventArgs e)
         {
             // Criar uma instância do controle de usuário "Login"
@@ -29,5 +42,6 @@ namespace FINAL_V2
             // Adicionar o controle de usuário ao formulário
             this.Controls.Add(loginControl);
         }
+
     }
 }

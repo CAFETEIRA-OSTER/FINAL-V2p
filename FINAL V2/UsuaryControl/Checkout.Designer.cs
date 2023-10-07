@@ -1,13 +1,13 @@
-﻿namespace FINAL_V2
+﻿namespace FINAL_V2.UsuaryControl
 {
-    partial class LoginForm
+    partial class Checkout
     {
-        /// <summary>
+        /// <summary> 
         /// Variável de designer necessária.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Limpar os recursos que estão sendo usados.
         /// </summary>
         /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
@@ -20,30 +20,22 @@
             base.Dispose(disposing);
         }
 
-        #region Código gerado pelo Windows Form Designer
+        #region Código gerado pelo Designer de Componentes
 
-        /// <summary>
+        /// <summary> 
         /// Método necessário para suporte ao Designer - não modifique 
         /// o conteúdo deste método com o editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.SuspendLayout();
             // 
-            // LoginForm
+            // Checkout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(890, 500);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyUp);
+            this.Name = "Checkout";
+            this.Size = new System.Drawing.Size(474, 259);
             this.ResumeLayout(false);
 
         }
@@ -51,4 +43,3 @@
         #endregion
     }
 }
-
