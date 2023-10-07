@@ -224,8 +224,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SistemaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SistemaForm";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SistemaForm_KeyUp);
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.menuStrip2.ResumeLayout(false);

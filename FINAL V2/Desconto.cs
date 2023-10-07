@@ -7,23 +7,25 @@ namespace FINAL_V2
     {
         private int valorLabel = 0;
         private string desconto = "";
-        public int ValorLabel
+        public int ValorLabell
         {
             get { return valorLabel; }
+            set
+            {
+                valorLabel = value;
+                label5.Text = valorLabel.ToString();
+            }
         }
+        
         public Desconto()
         {
             InitializeComponent();
             label5.Text = valorLabel.ToString();
             this.KeyUp += Desconto_KeyUp;
-            this.Shown += (sender, e) => AtualizarSomaTotala();
+            
 
         }
-        private void AtualizarSomaTotala()
-        {
-            valorLabel = ValorLabel;
-
-        }
+        
 
 
         private void Desconto_KeyDown(object sender, KeyEventArgs e)
@@ -44,8 +46,7 @@ namespace FINAL_V2
             }
             else if (e.KeyCode == Keys.Enter) // Tecla 'Enter'
             {
-                MessageBox.Show($"Valor da variável valorLabel: {valorLabel}");
-                
+                this.Close();
             }
         }
 
@@ -94,20 +95,5 @@ namespace FINAL_V2
         {
 
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-
-
-
-
     }
 }

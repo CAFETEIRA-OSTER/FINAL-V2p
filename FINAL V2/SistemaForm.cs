@@ -24,10 +24,28 @@ namespace FINAL_V2
             Application.EnableVisualStyles();
             this.KeyPreview = true;
             descontoForm = new Desconto(); // Inicialize o descontoForm aqui
-            
+            vendasToolStripMenuItem1.Select();
+
+
         }
-        
-        private void InitializeContextMenu()
+        private void SistemaForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                // Certifique-se de que 'somaTotal' e 'produtosCadastrados' tenham valores apropriados aqui
+                decimal somaTotal = 0; // Defina o valor apropriado
+                List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
+
+
+                // Crie uma instância do formulário "FormVendas" com os argumentos necessários
+                Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
+
+                // Mostre o formulário "FormVendas"
+                vendasForm.ShowDialog();
+
+            }
+        }
+            private void InitializeContextMenu()
         {
             Image iconFech = Properties.Resources.x;
             contextMenuStrip1.Items.Add("Fechar", iconFech, CloseToolStripMenuItem_Click);
@@ -35,6 +53,7 @@ namespace FINAL_V2
             contextMenuStrip1.Items.Add("Minimizar", iconMin, MinimizeToolStripMenuItem_Click);
             // Associe o contextMenuStrip1 ao panel4
             panel4.ContextMenuStrip = contextMenuStrip1;
+
 
 
         }
@@ -155,28 +174,18 @@ namespace FINAL_V2
 
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-
-
             // Certifique-se de que 'somaTotal' e 'produtosCadastrados' tenham valores apropriados aqui
             decimal somaTotal = 0; // Defina o valor apropriado
             List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
 
-            // Cria uma instância da classe 'Vendas'
-            Vendas vendasControl = new Vendas(somaTotal, produtosCadastrados);
 
-            // Configura o controle para preencher o espaço disponível no painel 'panel3'
-            vendasControl.Dock = DockStyle.Fill;
+            // Crie uma instância do formulário "FormVendas" com os argumentos necessários
+            Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
 
-            // Adicione o controle 'Vendas' ao 'panel3'
-            panel3.Controls.Clear(); // Limpa qualquer controle existente em 'panel3' se necessário
-            panel3.Controls.Add(vendasControl);
+            // Mostre o formulário "FormVendas"
+            vendasForm.ShowDialog();
 
-            // Defina a visibilidade do controle como verdadeira
-            vendasControl.Visible = true;
 
-            // Garanta que o controle 'Vendas' está na frente de outros controles, se necessário
-            vendasControl.BringToFront();
 
         }
 
@@ -184,27 +193,5 @@ namespace FINAL_V2
         {
 
         }
-        
-        private void SistemaForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            // Verifique se a tecla F7 foi pressionada
-            if (e.KeyCode == Keys.F7)
-            {
-
-                descontoForm.ShowDialog(); // Abre o formulário Desconto como uma janela de diálogo
-
-            }
-
-            // Aqui você pode adicionar mais manipulações de teclado conforme necessário
-            // Por exemplo, para tecla F2
-            if (e.KeyCode == Keys.F2)
-            {
-                MessageBox.Show("Você pressionou a tecla F2!");
-            }
-        }
-
-
-
-
     }
 }

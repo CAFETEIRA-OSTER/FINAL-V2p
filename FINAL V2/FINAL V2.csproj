@@ -108,10 +108,10 @@
     <Compile Include="UsuaryControl\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsuaryControl\Vendas.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Vendas.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsuaryControl\Vendas.Designer.cs">
+    <Compile Include="Vendas.Designer.cs">
       <DependentUpon>Vendas.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Desconto.resx">
@@ -145,7 +145,7 @@
     <EmbeddedResource Include="UsuaryControl\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsuaryControl\Vendas.resx">
+    <EmbeddedResource Include="Vendas.resx">
       <DependentUpon>Vendas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
