@@ -62,11 +62,29 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pagamentos\Crédito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagamentos\Crédito.Designer.cs">
+      <DependentUpon>Crédito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Desconto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Desconto.Designer.cs">
       <DependentUpon>Desconto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamentos\Dinheiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagamentos\Dinheiro.Designer.cs">
+      <DependentUpon>Dinheiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamentos\Débito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagamentos\Débito.Designer.cs">
+      <DependentUpon>Débito.cs</DependentUpon>
     </Compile>
     <Compile Include="Função.cs" />
     <Compile Include="KeyboardHook.cs" />
@@ -75,6 +93,12 @@
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamentos\Pix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pagamentos\Pix.Designer.cs">
+      <DependentUpon>Pix.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +143,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagamentos\Crédito.resx">
+      <DependentUpon>Crédito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagamentos\Dinheiro.resx">
+      <DependentUpon>Dinheiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagamentos\Débito.resx">
+      <DependentUpon>Débito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pagamentos\Pix.resx">
+      <DependentUpon>Pix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

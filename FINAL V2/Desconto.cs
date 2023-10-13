@@ -95,5 +95,18 @@ namespace FINAL_V2
         {
 
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+
+
+                // Feche o formulário quando a tecla "Esc" for pressionada.
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

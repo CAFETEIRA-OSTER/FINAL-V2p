@@ -193,5 +193,10 @@ namespace FINAL_V2
         {
 
         }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

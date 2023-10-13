@@ -102,6 +102,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(965, 30);
             this.panel4.TabIndex = 1;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SistemaForm_MouseClick);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);

@@ -16,7 +16,10 @@ namespace FINAL_V2
     public partial class Vendas : Form
     {
 
-
+        private bool isDragging = false;
+        private Point lastCursorPos;
+        private Point lastFormPos;
+        private Point lastCursorPosition;
         private int valorLabel = 0;
         private List<Produto> produtosCadastrados = new List<Produto>();
         private decimal somaTotal = 1;
@@ -56,8 +59,8 @@ namespace FINAL_V2
             // Iniciar o Timer
             timer1.Start();
 
-            
 
+            textBox1.Focus();
         }
         private void TimerAtualizarSoma_Tick(object sender, EventArgs e)
         {
@@ -124,7 +127,26 @@ namespace FINAL_V2
 
 
             }
-            
+            if (e.KeyCode == Keys.F3)
+            {
+                Crédito creditoForm = new Crédito();
+                creditoForm.ShowDialog();
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                Débito debitoForm = new Débito();
+                debitoForm.ShowDialog();
+            }
+            if (e.KeyCode == Keys.F5)
+            {
+                Pix pixForm = new Pix();
+                pixForm.ShowDialog();
+            }
+            if (e.KeyCode == Keys.F6)
+            {
+                Dinheiro dinheiroForm = new Dinheiro();
+                dinheiroForm.ShowDialog();
+            }
             // Verifique se a tecla F7 foi pressionada
             if (e.KeyCode == Keys.F7)
             {
@@ -282,14 +304,10 @@ namespace FINAL_V2
             }
         }
 
-        private void button7_Click_1(object sender, EventArgs e) // gerar qr
+        private void button7_Click(object sender, EventArgs e) // gerar qr
         {
 
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("00020126580014BR.GOV.BCB.PIX0136271aa240-1e82-4e8a-a6f3-5350415eb0d55204000053039865802BR5925Yuri Bernardo Siebeneichl6009SAO PAULO61080540900062240520ekpiML64c4DoBZxmgieb63047AD9", QRCodeGenerator.ECCLevel.Q);
-            QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(20);
-            pictureBox1.Image = qrCodeImage;
+            
         }
 
         private void button10_Click_1(object sender, EventArgs e)
@@ -347,6 +365,75 @@ namespace FINAL_V2
             
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Dinheiro dinheiroForm = new Dinheiro();
+            dinheiroForm.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Pix pixForm = new Pix();
+            pixForm.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Débito debitoForm = new Débito();
+            debitoForm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Crédito creditoForm = new Crédito();    
+            creditoForm.ShowDialog();
+        }
+
+        private void panel19_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                lastCursorPos = Cursor.Position;
+                lastFormPos = this.Location;
+            }
+        }
+
+        private void panel19_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentCursorPos = Cursor.Position;
+                int deltaX = currentCursorPos.X - lastCursorPos.X;
+                int deltaY = currentCursorPos.Y - lastCursorPos.Y;
+
+                this.Location = new Point(lastFormPos.X + deltaX, lastFormPos.Y + deltaY);
+            }
+        }
+
+        private void panel19_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+        private void panel19_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }
