@@ -178,16 +178,37 @@ namespace FINAL_V2
             decimal somaTotal = 0; // Defina o valor apropriado
             List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
 
-
             // Crie uma instância do formulário "FormVendas" com os argumentos necessários
             Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
 
-            // Mostre o formulário "FormVendas"
-            vendasForm.ShowDialog();
+            // Determine qual é o monitor 1 e monitor 2 (supondo que você tenha pelo menos dois monitores)
+            Screen[] screens = Screen.AllScreens;
 
+            // Verifique se há pelo menos dois monitores disponíveis
+            if (screens.Length >= 2)
+            {
+                // Defina o formulário "FormVendas" para o segundo monitor (monitor 1)
+                vendasForm.StartPosition = FormStartPosition.Manual;
+                vendasForm.Location = screens[1].WorkingArea.Location; // Posição do segundo monitor
 
+                // Crie uma instância do formulário "ClienteView"
+                ClienteView clienteViewForm = new ClienteView();
 
+                // Defina o formulário "ClienteView" para o primeiro monitor (monitor 0)
+                clienteViewForm.StartPosition = FormStartPosition.Manual;
+                clienteViewForm.Location = screens[0].WorkingArea.Location; // Posição do primeiro monitor
+
+                // Mostre ambos os formulários
+                vendasForm.Show();
+                clienteViewForm.Show();
+            }
+            else
+            {
+                // Em caso de apenas um monitor, exiba apenas o formulário "FormVendas" normalmente
+                vendasForm.ShowDialog();
+            }
         }
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {

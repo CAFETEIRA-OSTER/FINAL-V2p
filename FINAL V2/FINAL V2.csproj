@@ -62,6 +62,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteView.Designer.cs">
+      <DependentUpon>ClienteView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pagamentos\Crédito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     <Compile Include="Vendas.Designer.cs">
       <DependentUpon>Vendas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClienteView.resx">
+      <DependentUpon>ClienteView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Desconto.resx">
       <DependentUpon>Desconto.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +237,15 @@
   <ItemGroup>
     <None Include="Resources\log.png" />
     <None Include="Resources\ssssssss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YiG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YiG%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YiG%282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

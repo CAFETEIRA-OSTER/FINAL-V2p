@@ -29,7 +29,8 @@ namespace FINAL_V2
         private int linhaSelecionada = -1;
         private Desconto descontoForm;
         public decimal DescontoValue { get; set; }
-        
+        private ClienteView clienteViewForm;
+
         private string desconto = "";
 
         public int ValorLabel
@@ -44,6 +45,7 @@ namespace FINAL_V2
         public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados)
         {
             InitializeComponent();
+            clienteViewForm = new ClienteView();
             textBox1.Focus();
             this.somaTotal = somaTotal;
             this.produtosCadastrados = produtosCadastrados;
@@ -68,6 +70,8 @@ namespace FINAL_V2
             AtualizarSomaTotala();
 
             
+
+
 
             // Calcula a somaTotal3 com base na porcentagem em somaTotala
             decimal porcentagemDesconto = somaTotala / 100; // Converte a porcentagem em um valor decimal
@@ -435,5 +439,21 @@ namespace FINAL_V2
         {
             this.WindowState = FormWindowState.Normal;
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
+
+
+
+
     }
 }

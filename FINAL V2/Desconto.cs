@@ -108,5 +108,10 @@ namespace FINAL_V2
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
