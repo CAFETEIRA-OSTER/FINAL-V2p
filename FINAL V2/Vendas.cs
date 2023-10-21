@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FINAL_V2;
 
 namespace FINAL_V2
 {
@@ -30,9 +31,12 @@ namespace FINAL_V2
         private Desconto descontoForm;
         public decimal DescontoValue { get; set; }
         private ClienteView clienteViewForm;
+        private List<Produto> produtosExportados = new List<Produto>();
+        private List<int> produtosExibicaoIDs = new List<int>();
+
 
         private string desconto = "";
-
+        public List<Produto> produtosSelecionados { get; set; }
         public int ValorLabel
         {
             get { return valorLabel; }
@@ -45,6 +49,8 @@ namespace FINAL_V2
         public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados)
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AllowUserToAddRows = false;
             clienteViewForm = new ClienteView();
             textBox1.Focus();
             this.somaTotal = somaTotal;
@@ -64,11 +70,29 @@ namespace FINAL_V2
 
             textBox1.Focus();
         }
+
+        public class ProdutoRepository
+        {
+            private List<Produto> produtos = new List<Produto>();
+
+            public List<Produto> Produtos
+            {
+                get { return produtos; }
+            }
+
+            public void AdicionarProduto(Produto produto)
+            {
+                produtos.Add(produto);
+            }
+
+            // Outros métodos, se necessário
+        }
+
         private void TimerAtualizarSoma_Tick(object sender, EventArgs e)
         {
             // Executa a função para atualizar a soma total a cada segundo
             AtualizarSomaTotala();
-
+            AtualizarDataGridView2();
             
 
 
@@ -222,7 +246,7 @@ namespace FINAL_V2
             public string Nome { get; set; }
             public string Quantidade { get; set; }
             public decimal Valor { get; set; }
-            public string Tipo { get; set; }
+            
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) // adicionar intens
@@ -254,7 +278,7 @@ namespace FINAL_V2
                                 Nome = reader["Nome"].ToString(),
                                 Quantidade = "1", // Sempre começa com 1 ao ser adicionado
                                 Valor = Convert.ToDecimal(reader["Preço"]),
-                                Tipo = reader["Tipo"].ToString()
+                                
                             };
 
                             // Verifica se o produto já está na lista
@@ -277,7 +301,23 @@ namespace FINAL_V2
                             {
                                 // Se o produto não existe na lista, adiciona-o
                                 produtosCadastrados.Add(produto);
-                                dataGridView1.Rows.Add(produto.Id, produto.Nome, produto.Quantidade, (produto.Valor / 100).ToString("N2"), produto.Tipo);
+                                produtosExportados.Add(produto);
+                                dataGridView1.Rows.Add(produto.Id, produto.Nome, produto.Quantidade, (produto.Valor / 100).ToString("N2"));
+
+
+
+                                textBox1.Clear(); // Limpa o TextBox após adicionar
+
+                                // Calcula a soma total novamente
+                                somaTotal = produtosCadastrados.Sum(p => p.Valor);
+                                // Formata a somaTotal como moeda
+                                button13.Text = $"R${(somaTotal / 100):F2}";
+
+                                // Opcionalmente, você pode selecionar a última linha no DataGridView para que ela esteja visível
+                                if (dataGridView1.Rows.Count > 0)
+                                {
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                                }
                             }
 
                             textBox1.Clear(); // Limpa o TextBox após adicionar
@@ -450,10 +490,77 @@ namespace FINAL_V2
 
         }
 
-        
+        public class DadosDoDataGridViewSingleton
+        {
+            private static DadosDoDataGridViewSingleton instance = null;
+
+            public List<Produto> DadosDoDataGridView { get; set; } = new List<Produto>();
+
+            private DadosDoDataGridViewSingleton() { }
+
+            public static DadosDoDataGridViewSingleton Instance
+            {
+                get
+                {
+                    if (instance == null)
+                    {
+                        instance = new DadosDoDataGridViewSingleton();
+                    }
+                    return instance;
+                }
+            }
+        }
+
+
+
+        private void AtualizarDataGridView2()
+        {
+            // Limpe a lista de IDs
+            produtosExibicaoIDs.Clear();
+
+            // Acesse a instância do Singleton para obter os dados
+            List<Produto> dados = DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView;
+
+            // Limpe a lista de produtos
+            dados.Clear();
+
+
+            // Copie os dados do DataGridView1 para o DataGridView2 e para a instância do Singleton
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int id = (int)row.Cells[0].Value;
+                    string nome = row.Cells[1].Value.ToString();
+                    string quantidade = row.Cells[2].Value.ToString();
+                    decimal valor = Convert.ToDecimal(row.Cells[3].Value);
+
+                    Produto produto = new Produto
+                    {
+                        Id = id,
+                        Nome = nome,
+                        Quantidade = quantidade,
+                        Valor = valor
+                    };
+
+                    // Adicione o produto à instância do Singleton
+                    dados.Add(produto);
+
+                    // Adicione a ID do produto à lista de produtos exibidos no ClienteView
+                    produtosExibicaoIDs.Add(id);
+                }
+            }
+        }
 
 
 
 
+
+
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

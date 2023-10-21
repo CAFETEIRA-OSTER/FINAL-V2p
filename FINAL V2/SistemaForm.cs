@@ -171,8 +171,27 @@ namespace FINAL_V2
             // Garanta que o controle de usuário "Faturamento" está na frente de outros controles, se necessário
             faturamentoControl.BringToFront();
         }
-
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            decimal somaTotal = 0; // Defina o valor apropriado
+            List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
+            List<Vendas.Produto> produtosSelecionados = new List<Vendas.Produto>();
+
+
+            Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
+            ClienteView clienteViewForm = new ClienteView();
+
+            vendasForm.StartPosition = FormStartPosition.Manual;
+            vendasForm.Location = new Point(0, 0); // Posição do segundo monitor, ou qualquer posição que você desejar
+
+            clienteViewForm.StartPosition = FormStartPosition.Manual;
+            clienteViewForm.Location = new Point(0, 0); // Posição do primeiro monitor, ou qualquer posição que você desejar
+
+            vendasForm.Show();
+            clienteViewForm.Show();
+        }
+
+        /* private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // Certifique-se de que 'somaTotal' e 'produtosCadastrados' tenham valores apropriados aqui
             decimal somaTotal = 0; // Defina o valor apropriado
@@ -189,7 +208,7 @@ namespace FINAL_V2
             {
                 // Defina o formulário "FormVendas" para o segundo monitor (monitor 1)
                 vendasForm.StartPosition = FormStartPosition.Manual;
-                vendasForm.Location = screens[1].WorkingArea.Location; // Posição do segundo monitor
+                vendasForm.Location = screens[0].WorkingArea.Location; // Posição do segundo monitor
 
                 // Crie uma instância do formulário "ClienteView"
                 ClienteView clienteViewForm = new ClienteView();
@@ -204,10 +223,21 @@ namespace FINAL_V2
             }
             else
             {
+                // Defina o formulário "FormVendas" para o segundo monitor (monitor 1)
+                vendasForm.StartPosition = FormStartPosition.Manual;
+                vendasForm.Location = screens[0].WorkingArea.Location; // Posição do segundo monitor
+
+                // Crie uma instância do formulário "ClienteView"
+                ClienteView clienteViewForm = new ClienteView();
+
+                // Defina o formulário "ClienteView" para o primeiro monitor (monitor 0)
+                clienteViewForm.StartPosition = FormStartPosition.Manual;
+                clienteViewForm.Location = screens[0].WorkingArea.Location; // Posição do primeiro monitor
                 // Em caso de apenas um monitor, exiba apenas o formulário "FormVendas" normalmente
                 vendasForm.ShowDialog();
+                clienteViewForm.Show();
             }
-        }
+        }*/
 
 
         private void panel3_Paint(object sender, PaintEventArgs e)
