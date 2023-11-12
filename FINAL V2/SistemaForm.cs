@@ -13,20 +13,22 @@ namespace FINAL_V2
 {
     public partial class SistemaForm : Form
     {
-        private bool isDragging = false;
-        private Point lastCursorPosition;
-        private Desconto descontoForm; // Adicione esta linha
+        private bool isDragging = false;  // Variável para rastrear se o formulário está sendo arrastado
+        private Point lastCursorPosition;  // Armazena a última posição do cursor durante o arrasto
+        private Desconto descontoForm;  // Instância do formulário de desconto
+        private int nivelAcesso;  // Variável para armazenar o nível de acesso do usuário
         
-        public SistemaForm()
+        public SistemaForm(Login loginForm)
         {
             InitializeComponent();
             InitializeContextMenu();
             Application.EnableVisualStyles();
             this.KeyPreview = true;
-            descontoForm = new Desconto(); // Inicialize o descontoForm aqui
+            descontoForm = new Desconto();
             vendasToolStripMenuItem1.Select();
 
-
+            // Use a propriedade NivelAcesso para armazenar o nível de acesso
+            this.nivelAcesso = loginForm.NivelAcesso; // Alteração aqui
         }
 
         
@@ -96,11 +98,12 @@ namespace FINAL_V2
             }
         }
 
-        private void SistemaForm_Load(object sender, EventArgs e)
+        public void Receberlabels()
         {
-            // ...
+            // Faça o que quiser com o valor do NivelAcesso
+            // Por exemplo, atribua-o a um rótulo (label) em seu formulário
+            label1.Text = ("Acesso: ") + nivelAcesso.ToString();
         }
-
         private void panel4_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -295,6 +298,11 @@ namespace FINAL_V2
 
             // Garanta que o controle de usuário "Faturamento" está na frente de outros controles, se necessário
             cadastroControl.BringToFront();
+        }
+
+        private void SistemaForm_Load(object sender, EventArgs e)
+        {
+            Receberlabels();
         }
     }
 }

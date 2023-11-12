@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Xml;
 using System.Windows.Forms;
-using QRCoder;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FINAL_V2;
-
 namespace FINAL_V2
 {
     public partial class Crédito : Form
@@ -21,7 +11,12 @@ namespace FINAL_V2
         private Vendas ValorTotalForm;
 
         private string valorFormatadoVendas;
+
         private string valorFormatadoDesconto;
+
+        private string Empresa = "Book.in";
+
+        private string CNPJ = "00000000000000";
 
         private List<Vendas.Produto> produtos;
 
@@ -46,11 +41,6 @@ namespace FINAL_V2
             // Formatar os valores para exibir apenas dois dígitos após a vírgula
             valorFormatadoVendas = valorTotalVendas.ToString("N2");
             valorFormatadoDesconto = valorTotalDesconto.ToString("N2");
-        }
-
-        private void Crédito_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,6 +75,7 @@ namespace FINAL_V2
                 // Outras ações que você deseja realizar ao clicar no botão
             }
         }
+
         private int ObterUltimoNumeroNotaIDDoBancoDeDados()
         {
             int ultimoNumeroNotaID = 0;
@@ -137,27 +128,45 @@ namespace FINAL_V2
             XmlElement root = xmlDoc.CreateElement("NotaFiscal");
             xmlDoc.AppendChild(root);
 
-            // Informações básicas
             XmlElement numero = xmlDoc.CreateElement("Numero");
             numero.InnerText = ultimoNumeroNotaID.ToString();
             root.AppendChild(numero);
+
+            XmlElement empresa = xmlDoc.CreateElement("Empresa");
+            empresa.InnerText = Empresa;
+            root.AppendChild(empresa);
+
+            XmlElement cnpj = xmlDoc.CreateElement("CNPJ");
+            cnpj.InnerText = CNPJ;
+            root.AppendChild(cnpj);
+
+            XmlElement Operador = xmlDoc.CreateElement("Operador");
+            Operador.InnerText = ultimoNumeroNotaID.ToString();
+            root.AppendChild(Operador);
 
             XmlElement data = xmlDoc.CreateElement("Data");
             data.InnerText = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             root.AppendChild(data);
 
-            XmlElement CPF = xmlDoc.CreateElement("Numero");
-            numero.InnerText = ultimoNumeroNotaID.ToString();
+            XmlElement CPF = xmlDoc.CreateElement("CPF");
+            CPF.InnerText = textBox1.Text;
             root.AppendChild(CPF);
 
-            XmlElement email = xmlDoc.CreateElement("Numero");
-            numero.InnerText = ultimoNumeroNotaID.ToString();
-            root.AppendChild(numero);
+            XmlElement email = xmlDoc.CreateElement("e-mail");
+            email.InnerText = textBox2.Text;
+            root.AppendChild(email);
 
             // Detalhes dos produtos
             XmlElement produtosElement = xmlDoc.CreateElement("Produtos");
             root.AppendChild(produtosElement);
 
+            XmlElement desconto = xmlDoc.CreateElement("Desconto");
+            desconto.InnerText = valorFormatadoDesconto;
+            root.AppendChild(desconto);
+
+            XmlElement valorTotalElement = xmlDoc.CreateElement("ValorTotal");
+            valorTotalElement.InnerText = valorFormatadoVendas;
+            root.AppendChild(valorTotalElement);
             // Adicione cada produto à nota fiscal
             foreach (Vendas.Produto produto in produtos)
             {
@@ -178,11 +187,12 @@ namespace FINAL_V2
                 produtosElement.AppendChild(produtoElement);
             }
 
+            
+
             // Salva o arquivo XML no caminho escolhido pelo usuário
             xmlDoc.Save(caminhoCompleto);
 
         }
 
-        
     }
 }
