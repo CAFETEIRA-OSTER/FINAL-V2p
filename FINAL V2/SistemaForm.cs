@@ -28,21 +28,28 @@ namespace FINAL_V2
 
 
         }
+
+        
         private void SistemaForm_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                // Certifique-se de que 'somaTotal' e 'produtosCadastrados' tenham valores apropriados aqui
                 decimal somaTotal = 0; // Defina o valor apropriado
                 List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
+                List<Vendas.Produto> produtosSelecionados = new List<Vendas.Produto>();
 
 
-                // Crie uma instância do formulário "FormVendas" com os argumentos necessários
                 Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
+                ClienteView clienteViewForm = new ClienteView();
 
-                // Mostre o formulário "FormVendas"
-                vendasForm.ShowDialog();
+                vendasForm.StartPosition = FormStartPosition.Manual;
+                vendasForm.Location = new Point(0, 0); // Posição do segundo monitor, ou qualquer posição que você desejar
 
+                clienteViewForm.StartPosition = FormStartPosition.Manual;
+                clienteViewForm.Location = new Point(0, 0); // Posição do primeiro monitor, ou qualquer posição que você desejar
+
+                vendasForm.Show();
+                clienteViewForm.Show();
             }
         }
             private void InitializeContextMenu()
@@ -248,6 +255,46 @@ namespace FINAL_V2
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            // Cria uma instância do controle de usuário "Faturamento"
+            Consultar consultarControl = new Consultar();
+
+            // Define o controle de usuário para preencher o espaço disponível
+            consultarControl.Dock = DockStyle.Fill;
+
+            // Adicione o controle de usuário "Faturamento" ao formulário principal
+            panel3.Controls.Add(consultarControl);
+
+            // Defina a visibilidade do controle de usuário como verdadeira
+            consultarControl.Visible = true;
+
+
+            // Garanta que o controle de usuário "Faturamento" está na frente de outros controles, se necessário
+            consultarControl.BringToFront();
+        }
+
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            // Cria uma instância do controle de usuário "Faturamento"
+            Cadastrar cadastroControl = new Cadastrar();
+
+            // Define o controle de usuário para preencher o espaço disponível
+            cadastroControl.Dock = DockStyle.Fill;
+
+            // Adicione o controle de usuário "Faturamento" ao formulário principal
+            panel3.Controls.Add(cadastroControl);
+
+            // Defina a visibilidade do controle de usuário como verdadeira
+            cadastroControl.Visible = true;
+
+
+            // Garanta que o controle de usuário "Faturamento" está na frente de outros controles, se necessário
+            cadastroControl.BringToFront();
         }
     }
 }

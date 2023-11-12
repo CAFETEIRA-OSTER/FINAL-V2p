@@ -108,11 +108,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Editaritens.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editaritens.Designer.cs">
+      <DependentUpon>Editaritens.cs</DependentUpon>
+    </Compile>
     <Compile Include="SistemaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SistemaForm.Designer.cs">
       <DependentUpon>SistemaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsuaryControl\Cadastrar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuaryControl\Cadastrar.Designer.cs">
+      <DependentUpon>Cadastrar.cs</DependentUpon>
     </Compile>
     <Compile Include="UsuaryControl\Cadastro.cs">
       <SubType>UserControl</SubType>
@@ -125,6 +137,12 @@
     </Compile>
     <Compile Include="UsuaryControl\Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsuaryControl\Consultar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuaryControl\Consultar.Designer.cs">
+      <DependentUpon>Consultar.cs</DependentUpon>
     </Compile>
     <Compile Include="UsuaryControl\Faturamento.cs">
       <SubType>UserControl</SubType>
@@ -175,14 +193,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Editaritens.resx">
+      <DependentUpon>Editaritens.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SistemaForm.resx">
       <DependentUpon>SistemaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuaryControl\Cadastrar.resx">
+      <DependentUpon>Cadastrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuaryControl\Cadastro.resx">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuaryControl\Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuaryControl\Consultar.resx">
+      <DependentUpon>Consultar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuaryControl\Faturamento.resx">
       <DependentUpon>Faturamento.cs</DependentUpon>
@@ -246,6 +273,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\YiG%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consult21.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

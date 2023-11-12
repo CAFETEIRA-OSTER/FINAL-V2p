@@ -15,9 +15,7 @@ namespace FINAL_V2.UsuaryControl
     public partial class Faturamento : UserControl
     {
 
-        private string Dias;
-        private string Mes;
-        private string Ano;
+        
 
         public Faturamento()
         {

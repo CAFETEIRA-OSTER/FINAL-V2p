@@ -14,7 +14,7 @@ namespace FINAL_V2
     public partial class ClienteView : Form
     {
         
-        private Vendas vendasForm;
+        
         List<Produto> produtosCadastradosClienteView = new List<Produto>();
         ProdutoRepository produtoRepository = new ProdutoRepository();
 
@@ -36,6 +36,7 @@ namespace FINAL_V2
             
             InitializeComponent();
             
+
             dataGridView1.DataSource = produtosExibicao;
             // Configurar o intervalo do Timer para 1000 milissegundos (1 segundo)
             timer1.Interval = 1000;  // Defina o intervalo de acordo com a sua necessidade
@@ -120,6 +121,11 @@ namespace FINAL_V2
 
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
         {
 
         }

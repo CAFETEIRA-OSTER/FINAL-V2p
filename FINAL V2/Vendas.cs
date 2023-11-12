@@ -16,11 +16,23 @@ namespace FINAL_V2
 {
     public partial class Vendas : Form
     {
+        public decimal ValorTotal { get; set; }
+        public decimal DescontoTotal { get; set; }
+        public decimal NumeroNF { get; set; }
+
+        public class Produto
+        {
+            public int Id { get; set; }
+            public string Nome { get; set; }
+            public string Quantidade { get; set; }
+            public decimal Valor { get; set; }
+
+        }
 
         private bool isDragging = false;
         private Point lastCursorPos;
         private Point lastFormPos;
-        private Point lastCursorPosition;
+        
         private int valorLabel = 0;
         private List<Produto> produtosCadastrados = new List<Produto>();
         private decimal somaTotal = 1;
@@ -35,7 +47,7 @@ namespace FINAL_V2
         private List<int> produtosExibicaoIDs = new List<int>();
 
 
-        private string desconto = "";
+        
         public List<Produto> produtosSelecionados { get; set; }
         public int ValorLabel
         {
@@ -88,6 +100,18 @@ namespace FINAL_V2
             // Outros métodos, se necessário
         }
 
+        private void Vendas_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                NovaNF();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro durante o carregamento do formulário: " + ex.ToString());
+            }
+        }
+
         private void TimerAtualizarSoma_Tick(object sender, EventArgs e)
         {
             // Executa a função para atualizar a soma total a cada segundo
@@ -101,7 +125,8 @@ namespace FINAL_V2
             decimal porcentagemDesconto = somaTotala / 100; // Converte a porcentagem em um valor decimal
             decimal desconto = somaTotal * porcentagemDesconto;
             decimal somaTotal3 = somaTotal - desconto;
-
+            ValorTotal = somaTotal3;
+            
             // Define o valor de somaTotal como o texto do botão (button12)
             button13.Text = $"R${(somaTotal3 / 100):F2}"; // Formate a somaTotal3 como moeda, se necessário
 
@@ -109,6 +134,7 @@ namespace FINAL_V2
             decimal diferenca = somaTotal - somaTotal3;
             somaTotal2 = desconto;
             somaTotal3 *= diferenca;
+            DescontoTotal = somaTotal2;
 
             button12.Text = $"R${(somaTotal2 / 100):F2}";
 
@@ -138,6 +164,8 @@ namespace FINAL_V2
 
             if (e.KeyCode == Keys.F2)
             {
+                NovaNF();
+
                 // Limpar a lista de produtos e o DataGridView
                 produtosCadastrados.Clear();
                 dataGridView1.Rows.Clear();
@@ -149,6 +177,7 @@ namespace FINAL_V2
                 somaTotala = 0;
 
                 descontoForm.ValorLabell = 0;
+
                 // Atualizar os valores dos botões
                 button12.Text = $"R${(somaTotal2 / 100):F2}";
                 button13.Text = $"R${(somaTotal3 / 100):F2}";
@@ -157,7 +186,7 @@ namespace FINAL_V2
             }
             if (e.KeyCode == Keys.F3)
             {
-                Crédito creditoForm = new Crédito();
+                Crédito creditoForm = new Crédito(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
                 creditoForm.ShowDialog();
             }
             if (e.KeyCode == Keys.F4)
@@ -240,14 +269,8 @@ namespace FINAL_V2
             AtualizarSomaTotala();
             
         }
-        public class Produto
-        {
-            public int Id { get; set; }
-            public string Nome { get; set; }
-            public string Quantidade { get; set; }
-            public decimal Valor { get; set; }
-            
-        }
+        
+        
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) // adicionar intens
         {
@@ -304,8 +327,6 @@ namespace FINAL_V2
                                 produtosExportados.Add(produto);
                                 dataGridView1.Rows.Add(produto.Id, produto.Nome, produto.Quantidade, (produto.Valor / 100).ToString("N2"));
 
-
-
                                 textBox1.Clear(); // Limpa o TextBox após adicionar
 
                                 // Calcula a soma total novamente
@@ -326,7 +347,7 @@ namespace FINAL_V2
                             somaTotal = produtosCadastrados.Sum(p => p.Valor);
                             // Formata a somaTotal como moeda
                             button13.Text = $"R${(somaTotal3 / 100):F2}";
-
+                            
 
 
                             // Opcionalmente, você pode selecionar a última linha no DataGridView para que ela esteja visível
@@ -374,6 +395,9 @@ namespace FINAL_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            NovaNF();
+
             // Limpar a lista de produtos e o DataGridView
             produtosCadastrados.Clear();
             dataGridView1.Rows.Clear();
@@ -385,14 +409,11 @@ namespace FINAL_V2
             somaTotala = 0;
 
             descontoForm.ValorLabell = 0;
+
             // Atualizar os valores dos botões
             button12.Text = $"R${(somaTotal2 / 100):F2}";
             button13.Text = $"R${(somaTotal3 / 100):F2}";
 
-            // Outras ações de redefinição, se necessário
-
-            // Exemplo de mensagem informando que tudo foi redefinido
-            MessageBox.Show("Todas as variáveis e o DataGridView foram redefinidos.");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -414,7 +435,7 @@ namespace FINAL_V2
 
         }
 
-
+        
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -436,7 +457,7 @@ namespace FINAL_V2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Crédito creditoForm = new Crédito();    
+            Crédito creditoForm = new Crédito(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());    
             creditoForm.ShowDialog();
         }
 
@@ -472,23 +493,22 @@ namespace FINAL_V2
 
         private void panel19_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void button7_Click_1(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-        }
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
 
-        private void button16_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-        }
+            private void button16_Click(object sender, EventArgs e)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            {
 
-        }
+            }
 
         public class DadosDoDataGridViewSingleton
         {
