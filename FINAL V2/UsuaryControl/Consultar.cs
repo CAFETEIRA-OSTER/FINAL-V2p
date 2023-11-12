@@ -13,19 +13,6 @@ namespace FINAL_V2.UsuaryControl
 {
     public partial class Consultar : UserControl
     {
-
-
-        public class Produto
-        {
-            public int lid { get; set; }
-            public string Nome { get; set; }
-            public int Quantidade { get; set; }
-            public decimal Valor { get; set; }
-            public string Tipo { get; set; }
-            public decimal Lucro { get; set; }
-            public string Secao { get; set; }
-        }
-
         public Consultar()
         {
             InitializeComponent();

@@ -1,4 +1,4 @@
-﻿using QRCoder;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +58,9 @@ namespace FINAL_V2
                 
             }
         }
+
+        
+
         public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados)
         {
             InitializeComponent();
@@ -105,6 +108,8 @@ namespace FINAL_V2
             try
             {
                 NovaNF();
+
+                this.KeyUp += Vendas_KeyUp;
             }
             catch (Exception ex)
             {
@@ -112,6 +117,33 @@ namespace FINAL_V2
             }
         }
 
+        private void NovaNF()
+        {
+            string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
+
+            string query = "INSERT INTO NumNotas (random) VALUES ('SuaFraseAqui')";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Crie o objeto SqlCommand e atribua a consulta SQL
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Execute a instrução SQL
+                        command.ExecuteNonQuery();
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao acessar o banco de dados: " + ex.ToString());
+                }
+            }
+        }
         private void TimerAtualizarSoma_Tick(object sender, EventArgs e)
         {
             // Executa a função para atualizar a soma total a cada segundo
@@ -211,6 +243,13 @@ namespace FINAL_V2
                 descontoForm.ShowDialog(); // Abre o formulário Desconto como uma janela de diálogo
 
             }
+            if (e.KeyCode == Keys.F8)
+            {
+                
+                ConsultarVendas vendasForm = new ConsultarVendas();
+                vendasForm.ShowDialog(); // Abre o formulário Desconto como uma janela de diálogo
+
+            }
             if (e.KeyCode == Keys.F2)
             {
                 // Limpar a lista de produtos e o DataGridView
@@ -230,7 +269,10 @@ namespace FINAL_V2
 
 
             }
-
+            if (e.KeyCode == Keys.F9)
+            {
+                textBox1.Focus();
+            }
             if (e.KeyCode == Keys.F12)
             {
                 if (dataGridView1.Rows.Count > 0)
@@ -574,11 +616,41 @@ namespace FINAL_V2
 
 
 
+        public void AdicionarLinhaAoDataGridView(List<object> informacoesLinha)
+        {
+            if (informacoesLinha.Count > 0)
+            {
+                // Adiciona uma nova linha ao DataGridView1 usando as informações recebidas
+                dataGridView1.Rows.Add(informacoesLinha.ToArray());
+            }
+        }
 
-
-
+        private void Vendas_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Verifique se a tecla Alt foi pressionada
+            if (e.Alt)
+            {
+                // Dê foco ao TextBox textBox1
+                textBox1.Focus();
+            }
+        }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel11_Paint(object sender, PaintEventArgs e)
         {
 
         }

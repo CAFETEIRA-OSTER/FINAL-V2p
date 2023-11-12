@@ -1,113 +1,111 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FINAL_V2.UsuaryControl
 {
     public partial class Login : UserControl
     {
+        // Variável pública para armazenar o nível de acesso
+        public int NivelAcesso { get; private set; }
+
+        // Variável pública para armazenar o nome do usuário
+        public string NomeUsuario { get; private set; }
+
         public Login()
         {
             InitializeComponent();
         }
 
-
-
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        // Manipulador de eventos para o clique no botão de login
         private void button1_Click_1(object sender, EventArgs e)
         {
-            // Substitua "YourConnectionString" pela sua string de conexão
+            // String de conexão com o banco de dados
             string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
-            int acesso = 0; // Variável para armazenar o nível de acesso
-
+            // Usando a declaração para garantir que os recursos são liberados após o uso
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
+                    // Obtém o nome de usuário e senha inseridos nos campos de texto
                     string username = textBox1.Text;
                     string password = textBox2.Text;
 
                     // Consulta SQL para verificar se existe um registro com o mesmo username e password
                     string query = "SELECT COUNT(*) FROM cadastro WHERE Username = @Username AND Password = @Password";
 
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
-
-                    int count = (int)command.ExecuteScalar();
-
-                    if (count > 0)
+                    // Usando a declaração para garantir que os recursos são liberados após o uso
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Consulta SQL para obter o nível de acesso do usuário
-                        string acessoQuery = "SELECT Acesso FROM cadastro WHERE Username = @Username";
-                        SqlCommand acessoCommand = new SqlCommand(acessoQuery, connection);
-                        acessoCommand.Parameters.AddWithValue("@Username", username);
+                        // Adiciona parâmetros à consulta SQL
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password);
 
-                        // Obter o valor do nível de acesso
-                        object acessoResult = acessoCommand.ExecuteScalar();
+                        // Executa a consulta e obtém o número de registros correspondentes
+                        int count = (int)command.ExecuteScalar();
 
-
-                        if (acessoResult != null && acessoResult != DBNull.Value)
+                        // Verifica se o login é bem-sucedido
+                        if (count > 0)
                         {
-                            if (int.TryParse(acessoResult.ToString(), out acesso))
+                            // Consulta SQL para obter o nível de acesso e o nome do usuário
+                            string acessoQuery = "SELECT Acesso, Username FROM cadastro WHERE Username = @Username";
+
+                            // Usando a declaração para garantir que os recursos são liberados após o uso
+                            using (SqlCommand acessoCommand = new SqlCommand(acessoQuery, connection))
                             {
+                                acessoCommand.Parameters.AddWithValue("@Username", username);
 
-
-                                // Ocultar o Form1
-                                this.Hide();
-
-                                // Abrir o Form2
-                                if (acesso == 1)
+                                // Cria um leitor de dados para ler os resultados da consulta
+                                using (SqlDataReader reader = acessoCommand.ExecuteReader())
                                 {
-                                    Form parentForm = this.ParentForm;
-                                    if (parentForm != null)
+                                    // Verifica se há linhas retornadas
+                                    if (reader.HasRows)
                                     {
-                                        parentForm.Hide();
+                                        // Lê a primeira linha (deveria haver apenas uma)
+                                        reader.Read();
+
+                                        // Obtém o valor do nível de acesso
+                                        object acessoResult = reader["Acesso"];
+
+                                        // Obtém o valor do nome do usuário
+                                        object nomeResult = reader["Username"];
+
+                                        // Verifica se os valores são válidos e os converte para int e string, respectivamente
+                                        if (acessoResult != null && nomeResult != null && int.TryParse(acessoResult.ToString(), out int nivelAcesso))
+                                        {
+                                            // Armazena o nível de acesso e o nome nas variáveis públicas
+                                            NivelAcesso = nivelAcesso;
+                                            NomeUsuario = nomeResult.ToString();
+
+                                            // Exibe uma mensagem com o nível de acesso e o nome (pode ser substituído por outra lógica)
+                                            MessageBox.Show($"Login bem-sucedido! Nível de acesso: {NivelAcesso}, Nome: {NomeUsuario}");
+
+                                            // Oculta o controle de usuário "Login"
+                                            this.Hide();
+
+                                            // Abre o formulário principal (SistemaForm) passando a instância do Login
+                                            SistemaForm form1 = new SistemaForm(this);
+                                            form1.Show();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nível de acesso ou nome inválido.");
+                                        }
                                     }
-
-                                    // Abrir o "Form1"
-                                    SistemaForm form1 = new SistemaForm();
-                                    form1.Show();
+                                    else
+                                    {
+                                        MessageBox.Show("Login ou senha inválido");
+                                    }
                                 }
-                                if (acesso == 2)
-                                {
-
-                                }
-                                if (acesso == 3)
-                                {
-
-                                }
-
-
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Erro ao converter nível de acesso.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Nível de acesso não encontrado.");
+                            MessageBox.Show("Login ou senha inválido");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Login ou senha inválido");
                     }
                 }
                 catch (Exception ex)
@@ -117,6 +115,7 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
+        // Manipulador de eventos para o clique no link de cadastro
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Torna o controle de usuário "Login" invisível
@@ -125,19 +124,20 @@ namespace FINAL_V2.UsuaryControl
             // Cria uma instância do controle de usuário "Cadastro"
             Cadastro cadastroControl = new Cadastro();
 
-            // Definir o controle de usuário "Cadastro" para preencher o espaço disponível
+            // Define o controle de usuário "Cadastro" para preencher o espaço disponível
             cadastroControl.Dock = DockStyle.Fill;
 
-            // Adicionar o controle de usuário "Cadastro" ao mesmo contêiner que o controle de usuário "Login"
+            // Adiciona o controle de usuário "Cadastro" ao mesmo contêiner que o controle de usuário "Login"
             this.Parent.Controls.Add(cadastroControl);
 
-            // Colocar o controle de usuário "Cadastro" na frente (acima) do controle de usuário "Login"
+            // Coloca o controle de usuário "Cadastro" na frente (acima) do controle de usuário "Login"
             cadastroControl.BringToFront();
         }
 
+        // Manipulador de eventos para o clique no botão de fechar
         private void button2_Click_1(object sender, EventArgs e)
         {
-            // Certifique-se de que você tem uma referência válida para o formulário "LoginForm"
+            // Certifica-se de que você tem uma referência válida para o formulário "LoginForm"
             LoginForm loginForm = this.ParentForm as LoginForm;
 
             if (loginForm != null)
@@ -147,4 +147,4 @@ namespace FINAL_V2.UsuaryControl
             }
         }
     }
- }
+}

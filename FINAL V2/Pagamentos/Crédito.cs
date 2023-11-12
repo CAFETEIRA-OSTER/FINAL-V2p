@@ -41,7 +41,7 @@ namespace FINAL_V2
             // Formatar os valores para exibir apenas dois dígitos após a vírgula
             valorFormatadoVendas = valorTotalVendas.ToString("N2");
             valorFormatadoDesconto = valorTotalDesconto.ToString("N2");
-        }
+        }   
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -17,7 +17,7 @@ namespace FINAL_V2.UsuaryControl
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)// Cadastro de usuário
+        private void button1_Click_1(object sender, EventArgs e)// Cadastro de usuário
         {
 
             string Username = textBox1.Text;
@@ -98,5 +98,7 @@ namespace FINAL_V2.UsuaryControl
                 loginForm.Close();
             }
         }
+
+        
     }
 }
