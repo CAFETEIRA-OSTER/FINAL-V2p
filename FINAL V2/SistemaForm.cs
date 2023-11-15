@@ -20,6 +20,12 @@ namespace FINAL_V2
         private string Operador;
         private Timer timer;
 
+        public class GlobalDataSistema
+        {
+            public static string OperadorGlobal { get; set; }
+        }
+
+
         // Construtor do formulário, recebe uma instância do formulário de login (ou controle de usuário)
         public SistemaForm(Login loginForm)
         {
@@ -40,6 +46,7 @@ namespace FINAL_V2
         {
             if (e.KeyCode == Keys.F1)
             {
+                GlobalDataSistema.OperadorGlobal = Operador;
                 // Lógica para quando a tecla F1 é pressionada
                 decimal somaTotal = 0;  // Valor apropriado a ser definido
                 List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>();  // Produtos apropriados a serem preenchidos

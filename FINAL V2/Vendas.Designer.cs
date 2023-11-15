@@ -111,7 +111,7 @@
             this.panel27.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel27.Location = new System.Drawing.Point(360, 0);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(72, 248);
+            this.panel27.Size = new System.Drawing.Size(72, 116);
             this.panel27.TabIndex = 3;
             // 
             // panel22
@@ -122,7 +122,7 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(0, 672);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(1330, 248);
+            this.panel22.Size = new System.Drawing.Size(1330, 116);
             this.panel22.TabIndex = 5;
             // 
             // panel21
@@ -134,7 +134,7 @@
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel21.Location = new System.Drawing.Point(58, 0);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(1272, 248);
+            this.panel21.Size = new System.Drawing.Size(1272, 116);
             this.panel21.TabIndex = 4;
             // 
             // panel20
@@ -147,7 +147,7 @@
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel20.Location = new System.Drawing.Point(0, 0);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(783, 248);
+            this.panel20.Size = new System.Drawing.Size(783, 116);
             this.panel20.TabIndex = 2;
             // 
             // button12
@@ -247,7 +247,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel11.Location = new System.Drawing.Point(783, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(57, 248);
+            this.panel11.Size = new System.Drawing.Size(57, 116);
             this.panel11.TabIndex = 0;
             this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
             // 
@@ -258,7 +258,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel10.Location = new System.Drawing.Point(840, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(432, 248);
+            this.panel10.Size = new System.Drawing.Size(432, 116);
             this.panel10.TabIndex = 0;
             // 
             // button14
@@ -269,7 +269,7 @@
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.button14.Location = new System.Drawing.Point(0, 0);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(0, 248);
+            this.button14.Size = new System.Drawing.Size(0, 116);
             this.button14.TabIndex = 0;
             this.button14.Text = "Suporte(F8)";
             this.button14.UseVisualStyleBackColor = true;
@@ -282,7 +282,7 @@
             this.panel26.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(432, 248);
+            this.panel26.Size = new System.Drawing.Size(432, 116);
             this.panel26.TabIndex = 77;
             // 
             // button11
@@ -319,7 +319,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(58, 248);
+            this.panel7.Size = new System.Drawing.Size(58, 116);
             this.panel7.TabIndex = 0;
             // 
             // timer1
@@ -406,7 +406,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -734,7 +734,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 920);
+            this.ClientSize = new System.Drawing.Size(1330, 788);
             this.Controls.Add(this.panel22);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

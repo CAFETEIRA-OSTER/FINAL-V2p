@@ -194,5 +194,9 @@ namespace FINAL_V2
 
         }
 
+        private void Crédito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

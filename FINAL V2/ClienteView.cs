@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FINAL_V2.SistemaForm;
 using static FINAL_V2.Vendas;
 
 namespace FINAL_V2
@@ -29,7 +30,7 @@ namespace FINAL_V2
         };
         private BindingList<Vendas.Produto> produtosExibicao = new BindingList<Vendas.Produto>();
 
-
+        
         public ClienteView()
         {
             
@@ -39,7 +40,7 @@ namespace FINAL_V2
 
             dataGridView1.DataSource = produtosExibicao;
             // Configurar o intervalo do Timer para 1000 milissegundos (1 segundo)
-            timer1.Interval = 1000;  // Defina o intervalo de acordo com a sua necessidade
+            timer1.Interval = 10;  // Defina o intervalo de acordo com a sua necessidade
 
             // Assine o evento Tick do Timer
             timer1.Tick += Timer1_Tick;
@@ -47,21 +48,37 @@ namespace FINAL_V2
             // Iniciar o Timer
             timer1.Start();
 
+            // Configurar o intervalo do Timer para 1000 milissegundos (1 segundo)
+            timer2.Interval = 1000;  // Defina o intervalo de acordo com a sua necessidade
+
+            // Assine o evento Tick do Timer
+            timer2.Tick += timer2_Tick;
+
+            // Iniciar o Timer
+            timer2.Start();
+
         }
 
-        
 
-
-        // Suponha que você já tenha uma instância criada
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
             AtualizarDataGrid();
+            AtualizarPreco();
+            AtualizarOperador();
         }
 
+        private void AtualizarPreco()
+        {
+            button9.Text = GlobalData.Preco.ToString();
+            
+        }
         
-
-
+        private void AtualizarOperador()
+        {
+            
+            button3.Text = GlobalDataSistema.OperadorGlobal;
+        }
 
 
 
@@ -131,6 +148,23 @@ namespace FINAL_V2
         }
 
         private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // Atualizar a hora atual em tempo real no button4
+            button4.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void ClienteView_Load_2(object sender, EventArgs e)
+        {
+            // Atribuir a data atual ao button5
+            button5.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
         {
 
         }

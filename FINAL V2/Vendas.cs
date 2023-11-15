@@ -20,6 +20,11 @@ namespace FINAL_V2
         public decimal DescontoTotal { get; set; }
         public decimal NumeroNF { get; set; }
 
+        public class GlobalData
+        {
+            public static decimal Preco { get; set; }
+            public static string Postco { get; set; }
+        }
         public class Produto
         {
             public int Id { get; set; }
@@ -134,6 +139,8 @@ namespace FINAL_V2
                     {
                         // Execute a instrução SQL
                         command.ExecuteNonQuery();
+
+
                     }
 
 
@@ -158,7 +165,7 @@ namespace FINAL_V2
             decimal desconto = somaTotal * porcentagemDesconto;
             decimal somaTotal3 = somaTotal - desconto;
             ValorTotal = somaTotal3;
-            
+            GlobalData.Preco = somaTotal3 / 100;
             // Define o valor de somaTotal como o texto do botão (button12)
             button13.Text = $"R${(somaTotal3 / 100):F2}"; // Formate a somaTotal3 como moeda, se necessário
 
@@ -172,6 +179,41 @@ namespace FINAL_V2
 
         }
 
+        private void MostrarNF()
+        {
+            string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
+
+            string query = "SELECT TOP 1 * FROM NumNotas ORDER BY ID DESC";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            // Obtenha o valor presente no ID da tabela NumNotas
+                            decimal ultimoValor = Convert.ToDecimal(reader["random"]);
+
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nenhum registro encontrado na tabela NumNotas.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao acessar o banco de dados: " + ex.ToString());
+                }
+            }
+        }
 
         private void SistemaForm_KeyUp(object sender, KeyEventArgs e)
         {
@@ -193,10 +235,11 @@ namespace FINAL_V2
                 button13.Text = $"R${(somaTotal / 100):F2}";
             }
             
-
+            
             if (e.KeyCode == Keys.F2)
             {
                 NovaNF();
+                MostrarNF();
 
                 // Limpar a lista de produtos e o DataGridView
                 produtosCadastrados.Clear();

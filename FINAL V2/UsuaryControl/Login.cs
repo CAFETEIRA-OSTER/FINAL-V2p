@@ -80,8 +80,7 @@ namespace FINAL_V2.UsuaryControl
                                             NivelAcesso = nivelAcesso;
                                             NomeUsuario = nomeResult.ToString();
 
-                                            // Exibe uma mensagem com o nível de acesso e o nome (pode ser substituído por outra lógica)
-                                            MessageBox.Show($"Login bem-sucedido! Nível de acesso: {NivelAcesso}, Nome: {NomeUsuario}");
+
 
                                             // Oculta o controle de usuário "Login"
                                             this.Hide();
@@ -89,6 +88,9 @@ namespace FINAL_V2.UsuaryControl
                                             // Abre o formulário principal (SistemaForm) passando a instância do Login
                                             SistemaForm form1 = new SistemaForm(this);
                                             form1.Show();
+
+                                            
+
                                         }
                                         else
                                         {

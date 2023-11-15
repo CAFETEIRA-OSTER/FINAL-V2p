@@ -13,12 +13,15 @@ namespace FINAL_V2
 {
     public partial class LoginForm : Form
     {
+
+        
         public LoginForm()
         {
             InitializeComponent();
 
             this.KeyPreview = true;
             this.KeyUp += new KeyEventHandler(LoginForm_KeyUp);
+           
 
 
         }
