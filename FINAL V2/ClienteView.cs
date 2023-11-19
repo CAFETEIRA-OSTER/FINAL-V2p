@@ -66,20 +66,28 @@ namespace FINAL_V2
             AtualizarDataGrid();
             AtualizarPreco();
             AtualizarOperador();
+            AtualizarNF();
         }
 
         private void AtualizarPreco()
         {
-            button9.Text = GlobalData.Preco.ToString();
+            button9.Text = "R$ " + GlobalData.Preco.ToString();
             
         }
-        
+        private void AtualizarNF()
+        {
+            button6.Text = "CUPOM FISCAL NÚMERO: " + GlobalData.NF.ToString();
+        }
         private void AtualizarOperador()
         {
             
             button3.Text = GlobalDataSistema.OperadorGlobal;
         }
-
+        private void AtualizaDados()
+        {
+            button6.Text = GlobalData.NF.ToString();
+            button3.Text = GlobalDataSistema.OperadorGlobal;
+        }
 
 
 
@@ -162,9 +170,20 @@ namespace FINAL_V2
         {
             // Atribuir a data atual ao button5
             button5.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            
         }
 
         private void button7_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }

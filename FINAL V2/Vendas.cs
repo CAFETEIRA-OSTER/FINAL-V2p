@@ -23,7 +23,7 @@ namespace FINAL_V2
         public class GlobalData
         {
             public static decimal Preco { get; set; }
-            public static string Postco { get; set; }
+            public static decimal NF { get; set; }
         }
         public class Produto
         {
@@ -183,7 +183,7 @@ namespace FINAL_V2
         {
             string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
-            string query = "SELECT TOP 1 * FROM NumNotas ORDER BY ID DESC";
+            string query = "SELECT TOP 1 * FROM NumNotas ORDER BY NotaID DESC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -198,9 +198,9 @@ namespace FINAL_V2
                         if (reader.Read())
                         {
                             // Obtenha o valor presente no ID da tabela NumNotas
-                            decimal ultimoValor = Convert.ToDecimal(reader["random"]);
+                            decimal ultimoValor = Convert.ToDecimal(reader["NotaID"]);
 
-                            
+                            GlobalData.NF = ultimoValor;
                         }
                         else
                         {
@@ -482,6 +482,7 @@ namespace FINAL_V2
         {
 
             NovaNF();
+            MostrarNF();
 
             // Limpar a lista de produtos e o DataGridView
             produtosCadastrados.Clear();
