@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace FINAL_V2
 {
@@ -164,24 +166,7 @@ namespace FINAL_V2
             {
                 isDragging = false;
 
-                // Obtém a largura da tela primária
-                int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
-                int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
-
-                // Define uma margem (por exemplo, 10 pixels) para considerar como "perto" da borda
-                int margin = 10;
-
-                // Verifica se o formulário está à esquerda ou à direita da metade da tela, considerando a margem
-                if (this.Left <= margin)
-                {
-                    // Alinha o formulário à esquerda da tela
-                    this.Left = 0;
-                }
-                else if (this.Left + this.Width >= screenWidth - margin)
-                {
-                    // Alinha o formulário à direita da tela
-                    this.Left = screenWidth - this.Width;
-                }
+                
             }
         }
 
@@ -325,6 +310,17 @@ namespace FINAL_V2
         private void estoqueToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ajudaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // Abre o link no navegador padrão
+            Process.Start("https://92e41e-2.myshopify.com/?_ab=0&_fd=0&_sc=1");
         }
     }
 }
