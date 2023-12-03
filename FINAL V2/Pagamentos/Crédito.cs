@@ -5,25 +5,16 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
-using Google.Apis.Gmail.v1.Data;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
-using System.IO;
 using System.Threading;
 using MimeKit;
-using MailKit;
-using System.Threading.Tasks;
-using Google.Apis.Auth.OAuth2.Flows;
-using System.Net.Mail;
-using System.Linq;
-using System.Net;
-
+using Google.Apis.Services;
+using System.IO;
 
 namespace FINAL_V2
 {
     public partial class Crédito : Form
     {
-        // Deve ser uma propriedade para armazenar a referência ao formulário Vendas
+       
         private Vendas ValorTotalForm;
 
         private string valorFormatadoVendas;
@@ -34,18 +25,16 @@ namespace FINAL_V2
 
         private string CNPJ = "00000000000000";
 
-        private string Produtos;
-
         private List<Vendas.Produto> produtos;
 
-        private Vendas _vendasForm;
-
+        private string Destinatario;
+        public static TextBox TextBox2 { get; set; }
 
         public Crédito(Vendas valorTotal, List<Vendas.Produto> produtos)
         {
             InitializeComponent();
 
-
+            TextBox2 = textBox2;
 
             // Corrija a inicialização aqui
             this.ValorTotalForm = valorTotal;
@@ -65,6 +54,27 @@ namespace FINAL_V2
             valorFormatadoVendas = valorTotalVendas.ToString("N2");
             valorFormatadoDesconto = valorTotalDesconto.ToString("N2");
 
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+
+
+                // Feche o formulário quando a tecla "Esc" for pressionada.
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void Crédito_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Verifica se a tecla pressionada é a tecla F10
+            if (e.KeyCode == Keys.F10)
+            {
+                // Chama a função do button1_Click
+                button1_Click(sender, e);
+            }
         }
 
         private decimal CalcularLucroTotal()
@@ -131,44 +141,74 @@ namespace FINAL_V2
             return lucroTotal;
         }
 
-        private async void EnviarEmail()
+        private static void SendEmailWithGmailAPI(string attachmentPath, string Destinatario)
         {
-            try
-            {
-                GoogleCredential credential;
-                using (var stream = new FileStream("C:\\credential\\client_secret_215512360374-c71hglo3krpv4210arhv0aides3t4260.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
-                {
-                    credential = await GoogleCredential.FromStreamAsync(stream, CancellationToken.None);
-                    credential = credential.CreateScoped(new[] { GmailService.Scope.MailGoogleCom });
-                }
+            string credPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            credPath = Path.Combine(credPath, ".credentials", "gmail-dotnet-quickstart.json");
 
-                var service = new GmailService(new BaseClientService.Initializer()
+            using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            {
+                var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    new[] { GmailService.Scope.MailGoogleCom },
+                    "user",
+                    CancellationToken.None).Result;
+
+                var gmailService = new GmailService(new BaseClientService.Initializer()
                 {
                     HttpClientInitializer = credential,
-                    ApplicationName = "YourAppName",
+                    ApplicationName = "Gmail API .NET Quickstart"
                 });
 
-                var message = new MimeKit.MimeMessage(); // Corrigido para utilizar MimeMessage do MimeKit
-                message.From.Add(new MailboxAddress("Your Name", "youremail@gmail.com")); // Your email address
-                message.To.Add(new MailboxAddress("Recipient","yuribernardosie@gmail.com")); // Recipient's email address
-                message.Subject = "penis";
-                message.Body = new TextPart("plain")
+                var mimeMessage = new MimeMessage();
+                mimeMessage.From.Add(new MailboxAddress("BOOK.IN", "yuribernardo@gmail.com"));
+                mimeMessage.To.Add(new MailboxAddress("Client", Destinatario));
+                mimeMessage.Subject = "BOOK.IN - NOTA FISCAL";
+
+                // Adiciona o arquivo XML como anexo ao e-mail
+                var attachment = new MimePart("application", "octet-stream")
                 {
-                    Text = "sexo"
+                    Content = new MimeContent(File.OpenRead(attachmentPath)),
+                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                    ContentTransferEncoding = ContentEncoding.Base64,
+                    FileName = Path.GetFileName(attachmentPath)
                 };
 
-                var mimeMessage = message;
+                // Adiciona o anexo ao corpo do e-mail
+                var body = new TextPart("plain")
+                {
+                    Text = "Ola,\n\n" +
+                       "Segue em Anexo sua Nota Fiscal,\n" +
+                       "Obrigado por compra na BOOK.IN,\n\n" +
+                       "Volte sempre."
+                };
+
+                var multipart = new Multipart("mixed");
+                multipart.Add(body);
+                multipart.Add(attachment);
+
+                mimeMessage.Body = multipart;
+
                 var rawMessage = Base64UrlEncode(mimeMessage.ToString());
-                await service.Users.Messages.Send(new Google.Apis.Gmail.v1.Data.Message { Raw = rawMessage }, "me").ExecuteAsync();
-                MessageBox.Show("E-mail enviado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao enviar o e-mail: " + ex.Message);
+
+                var email = new Google.Apis.Gmail.v1.Data.Message // Usando a classe Message do Gmail API
+                {
+                    Raw = rawMessage
+                };
+
+                try
+                {
+                    gmailService.Users.Messages.Send(email, "me").Execute();
+                    Console.WriteLine("Email sent successfully!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occurred: " + ex.Message);
+                }
             }
         }
 
-        private string Base64UrlEncode(string input)
+        private static string Base64UrlEncode(string input)
         {
             var inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
             return Convert.ToBase64String(inputBytes)
@@ -179,13 +219,18 @@ namespace FINAL_V2
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Destinatario = TextBox2.Text;
+
             AtualizarEstoque();
 
             int ultimoNumeroNotaID = ObterUltimoNumeroNotaIDDoBancoDeDados();
 
             decimal lucroTotal = CalcularLucroTotal();
+
             // Obtém a data atual
             DateTime dataAtual = DateTime.Now;
+
             // Concatena todos os produtos em uma variável única para NomeProduto
             string todosProdutos = "";
             foreach (Vendas.Produto produto in produtos)
@@ -213,16 +258,15 @@ namespace FINAL_V2
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string caminhoCompleto = saveFileDialog.FileName;
+                string destinatarioEmail = textBox2.Text; // Obtenha o texto do textBox2
 
                 // Chama a função para gerar a nota fiscal e passa o caminho escolhido
                 GerarNotaFiscal(caminhoCompleto);
 
-                EnviarEmail();
-                
+                // Envie o e-mail após a geração da nota fiscal, passando o destinatarioEmail
+                SendEmailWithGmailAPI(caminhoCompleto, Destinatario); // <-- Remova uma dessas linhas
             }
         }
-
-
 
         private void AdicionarInformacoesNFADM(int ultimoNumeroNotaID, DateTime dataAtual, string nomeProduto, string valorComercial, decimal lucroTotal)
         {
@@ -253,7 +297,7 @@ namespace FINAL_V2
                         command.Parameters.AddWithValue("@LucroTotalString", lucroTotalString);
 
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Informações adicionadas à tabela NFADM com sucesso.");
+                        
                     }
 
                 }
@@ -304,13 +348,7 @@ namespace FINAL_V2
 
             return ultimoNumeroNotaID;
         }
-
-        
-
-
         // Método para codificar em Base64 URL Safe
-
-
         private void GerarNotaFiscal(string caminhoCompleto)
         {
             // Criação do documento XML
@@ -334,8 +372,9 @@ namespace FINAL_V2
             cnpj.InnerText = CNPJ;
             root.AppendChild(cnpj);
 
+
             XmlElement Operador = xmlDoc.CreateElement("Operador");
-            Operador.InnerText = ultimoNumeroNotaID.ToString();
+            Operador.InnerText = "Yuri";
             root.AppendChild(Operador);
 
             XmlElement data = xmlDoc.CreateElement("Data");
@@ -361,6 +400,10 @@ namespace FINAL_V2
             XmlElement valorTotalElement = xmlDoc.CreateElement("ValorTotal");
             valorTotalElement.InnerText = valorFormatadoVendas;
             root.AppendChild(valorTotalElement);
+
+            XmlElement metodoElement = xmlDoc.CreateElement("MétodoDePagamento");
+            valorTotalElement.InnerText = "Crédito";
+            root.AppendChild(metodoElement);
             // Adicione cada produto à nota fiscal
             foreach (Vendas.Produto produto in produtos)
             {
@@ -453,12 +496,7 @@ namespace FINAL_V2
         }
         private void Crédito_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -488,9 +526,5 @@ namespace FINAL_V2
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

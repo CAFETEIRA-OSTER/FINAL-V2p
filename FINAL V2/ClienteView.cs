@@ -187,6 +187,11 @@ namespace FINAL_V2
         {
 
         }
+
+        private void panel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

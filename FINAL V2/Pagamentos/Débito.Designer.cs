@@ -47,7 +47,7 @@
             this.label2.Size = new System.Drawing.Size(151, 39);
             this.label2.TabIndex = 28;
             this.label2.Text = "DÉBITO";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // button1
             // 
@@ -59,6 +59,7 @@
             this.button1.TabIndex = 27;
             this.button1.Text = "CONFIRMAR PAGAMENTO(F10)";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -128,7 +129,7 @@
             this.Name = "Débito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Débito";
-            this.Load += new System.EventHandler(this.Débito_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

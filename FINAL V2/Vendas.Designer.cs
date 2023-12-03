@@ -73,8 +73,6 @@
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -563,8 +561,6 @@
             // panel29
             // 
             this.panel29.Controls.Add(this.button16);
-            this.panel29.Controls.Add(this.button7);
-            this.panel29.Controls.Add(this.button15);
             this.panel29.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel29.Location = new System.Drawing.Point(360, 0);
             this.panel29.Name = "panel29";
@@ -580,47 +576,12 @@
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 11.25F, System.Drawing.FontStyle.Bold);
             this.button16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button16.Location = new System.Drawing.Point(0, 61);
+            this.button16.Location = new System.Drawing.Point(0, 0);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(72, 25);
             this.button16.TabIndex = 20;
-            this.button16.Text = "---";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(59)))));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("HoloLens MDL2 Assets", 11.25F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button7.Location = new System.Drawing.Point(0, 36);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(72, 25);
-            this.button7.TabIndex = 19;
-            this.button7.Text = "---";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(59)))));
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.button15.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button15.Location = new System.Drawing.Point(0, 0);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(72, 36);
-            this.button15.TabIndex = 17;
-            this.button15.Text = "X";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // panel8
             // 
@@ -815,10 +776,8 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

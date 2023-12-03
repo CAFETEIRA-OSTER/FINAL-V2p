@@ -387,5 +387,20 @@
   <ItemGroup>
     <None Include="Resources\consult21.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Consulta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Consulta1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cadastrarx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cadastrarx1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cad.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

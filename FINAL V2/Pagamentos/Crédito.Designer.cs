@@ -55,7 +55,7 @@
             this.button1.Location = new System.Drawing.Point(95, 382);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(436, 49);
-            this.button1.TabIndex = 34;
+            this.button1.TabIndex = 2;
             this.button1.Text = "CONFIRMAR PAGAMENTO(F10)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -89,7 +89,7 @@
             this.textBox1.MaxLength = 11;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(436, 53);
-            this.textBox1.TabIndex = 30;
+            this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -109,7 +109,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(436, 53);
-            this.textBox2.TabIndex = 36;
+            this.textBox2.TabIndex = 1;
             // 
             // Crédito
             // 

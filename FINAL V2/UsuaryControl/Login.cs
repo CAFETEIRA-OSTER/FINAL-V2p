@@ -148,5 +148,10 @@ namespace FINAL_V2.UsuaryControl
                 loginForm.Close();
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

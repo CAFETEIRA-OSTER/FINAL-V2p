@@ -63,6 +63,36 @@ namespace FINAL_V2.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cad {
+            get {
+                object obj = ResourceManager.GetObject("cad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cadastrarx {
+            get {
+                object obj = ResourceManager.GetObject("cadastrarx", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cadastrarx1 {
+            get {
+                object obj = ResourceManager.GetObject("cadastrarx1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap consult {
             get {
                 object obj = ResourceManager.GetObject("consult", resourceCulture);
@@ -76,6 +106,26 @@ namespace FINAL_V2.Properties {
         internal static System.Drawing.Bitmap consult21 {
             get {
                 object obj = ResourceManager.GetObject("consult21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consulta {
+            get {
+                object obj = ResourceManager.GetObject("Consulta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Consulta1 {
+            get {
+                object obj = ResourceManager.GetObject("Consulta1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

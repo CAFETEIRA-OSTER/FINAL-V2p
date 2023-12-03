@@ -49,25 +49,41 @@ namespace FINAL_V2
             if (e.KeyCode == Keys.F1)
             {
                 GlobalDataSistema.OperadorGlobal = Operador;
-                // Lógica para quando a tecla F1 é pressionada
-                decimal somaTotal = 0;  // Valor apropriado a ser definido
-                List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>();  // Produtos apropriados a serem preenchidos
+
+                decimal somaTotal = 0;
+                List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>();
                 List<Vendas.Produto> produtosSelecionados = new List<Vendas.Produto>();
 
-                // Instâncias dos formulários de vendas e visualização de cliente
                 Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
                 ClienteView clienteViewForm = new ClienteView();
 
-                // Configuração da posição dos formulários
-                vendasForm.StartPosition = FormStartPosition.Manual;
-                vendasForm.Location = new Point(0, 0);  // Posição do segundo monitor ou qualquer posição desejada
+                // Encontrar os monitores disponíveis
+                Screen[] screens = Screen.AllScreens;
 
-                clienteViewForm.StartPosition = FormStartPosition.Manual;
-                clienteViewForm.Location = new Point(0, 0);  // Posição do primeiro monitor ou qualquer posição desejada
+                if (screens.Length >= 2)
+                {
+                    // Configurar o formulário ClienteView para o monitor 1 e maximizado
+                    clienteViewForm.WindowState = FormWindowState.Maximized;
+                    clienteViewForm.StartPosition = FormStartPosition.Manual;
+                    clienteViewForm.Location = screens[0].WorkingArea.Location;
+                    clienteViewForm.Size = screens[0].WorkingArea.Size;
 
-                // Exibição dos formulários
-                vendasForm.Show();
-                clienteViewForm.Show();
+                    // Configurar o formulário Vendas para o monitor 2 e maximizado
+                    vendasForm.WindowState = FormWindowState.Maximized;
+                    vendasForm.StartPosition = FormStartPosition.Manual;
+                    vendasForm.Location = screens[1].WorkingArea.Location;
+                    vendasForm.Size = screens[1].WorkingArea.Size;
+
+                    // Exibir os formulários
+                    clienteViewForm.Show();
+                    vendasForm.Show();
+                }
+                else
+                {
+                    // Se não houver dois monitores, exiba os formulários normalmente
+                    vendasForm.Show();
+                    clienteViewForm.Show();
+                }
             }
         }
 
@@ -206,26 +222,44 @@ namespace FINAL_V2
         // Manipulador de eventos para o item de menu de vendas
         private void vendasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            decimal somaTotal = 0; // Defina o valor apropriado
-            List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>(); // Preencha com produtos apropriados
+            GlobalDataSistema.OperadorGlobal = Operador;
+
+            decimal somaTotal = 0;
+            List<Vendas.Produto> produtosCadastrados = new List<Vendas.Produto>();
             List<Vendas.Produto> produtosSelecionados = new List<Vendas.Produto>();
 
-            // Cria uma instância do formulário "Vendas" com os argumentos necessários
             Vendas vendasForm = new Vendas(somaTotal, produtosCadastrados);
             ClienteView clienteViewForm = new ClienteView();
 
-            // Define a posição do formulário "Vendas"
-            vendasForm.StartPosition = FormStartPosition.Manual;
-            vendasForm.Location = new Point(0, 0); // Posição do segundo monitor, ou qualquer posição que você desejar
+            // Encontrar os monitores disponíveis
+            Screen[] screens = Screen.AllScreens;
 
-            // Define a posição do formulário "ClienteView"
-            clienteViewForm.StartPosition = FormStartPosition.Manual;
-            clienteViewForm.Location = new Point(0, 0); // Posição do primeiro monitor, ou qualquer posição que você desejar
+            if (screens.Length >= 2)
+            {
+                // Configurar o formulário ClienteView para o monitor 1 e maximizado
+                clienteViewForm.WindowState = FormWindowState.Maximized;
+                clienteViewForm.StartPosition = FormStartPosition.Manual;
+                clienteViewForm.Location = screens[0].WorkingArea.Location;
+                clienteViewForm.Size = screens[0].WorkingArea.Size;
 
-            // Exibe ambos os formulários
-            vendasForm.Show();
-            clienteViewForm.Show();
+                // Configurar o formulário Vendas para o monitor 2 e maximizado
+                vendasForm.WindowState = FormWindowState.Maximized;
+                vendasForm.StartPosition = FormStartPosition.Manual;
+                vendasForm.Location = screens[1].WorkingArea.Location;
+                vendasForm.Size = screens[1].WorkingArea.Size;
+
+                // Exibir os formulários
+                clienteViewForm.Show();
+                vendasForm.Show();
+            }
+            else
+            {
+                // Se não houver dois monitores, exiba os formulários normalmente
+                vendasForm.Show();
+                clienteViewForm.Show();
+            }
         }
+
 
         // Manipulador de eventos para o item de menu de consultar
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)

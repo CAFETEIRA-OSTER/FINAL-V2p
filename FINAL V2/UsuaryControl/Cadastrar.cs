@@ -300,6 +300,11 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // Variável pública para armazenar o ID selecionado
 
     }

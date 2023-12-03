@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FINAL_V2;
+using static FINAL_V2.SistemaForm;
 
 namespace FINAL_V2
 {
@@ -50,6 +51,7 @@ namespace FINAL_V2
         private ClienteView clienteViewForm;
         private List<Produto> produtosExportados = new List<Produto>();
         private List<int> produtosExibicaoIDs = new List<int>();
+        private string teste;
 
 
         
@@ -110,6 +112,8 @@ namespace FINAL_V2
 
         private void Vendas_Load(object sender, EventArgs e)
         {
+
+            teste = GlobalDataSistema.OperadorGlobal;
             try
             {
                 NovaNF();
@@ -266,7 +270,7 @@ namespace FINAL_V2
             }
             if (e.KeyCode == Keys.F4)
             {
-                Débito debitoForm = new Débito();
+                Débito debitoForm = new Débito(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
                 debitoForm.ShowDialog();
             }
             if (e.KeyCode == Keys.F5)
@@ -537,7 +541,7 @@ namespace FINAL_V2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Débito debitoForm = new Débito();
+            Débito debitoForm = new Débito(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
             debitoForm.ShowDialog();
         }
 
