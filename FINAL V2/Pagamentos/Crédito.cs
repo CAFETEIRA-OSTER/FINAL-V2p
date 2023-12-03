@@ -15,20 +15,19 @@ namespace FINAL_V2
     public partial class Crédito : Form
     {
        
-        private List<Vendas.Produto> produtos;
-
         private Vendas ValorTotalForm;
 
         private string valorFormatadoVendas;
 
         private string valorFormatadoDesconto;
 
-        private string Destinatario; 
-
         private string Empresa = "Book.in";
 
         private string CNPJ = "00000000000000";
 
+        private List<Vendas.Produto> produtos;
+
+        private string Destinatario;
         public static TextBox TextBox2 { get; set; }
 
         public Crédito(Vendas valorTotal, List<Vendas.Produto> produtos) // inicialização do Form, recebe variaveis do formulário pai
@@ -69,7 +68,6 @@ namespace FINAL_V2
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         private void Crédito_KeyDown(object sender, KeyEventArgs e)
         {
             // Verifica se a tecla pressionada é a tecla F10
@@ -78,9 +76,9 @@ namespace FINAL_V2
                 // Chama a função do button1_Click
                 button1_Click(sender, e);
             }
-        } // teclas de atalho function
+        } // teclas de atalho funtion
 
-        private decimal CalcularLucroTotal() // essa função epga o valor de lucro de cada objeto vendido, soma, e armazena no bd das notas fiscais
+        private decimal CalcularLucroTotal()
         {
             decimal lucroTotal = 0;
 
@@ -209,9 +207,9 @@ namespace FINAL_V2
                     Console.WriteLine("An error occurred: " + ex.Message);
                 }
             }
-        } // essa função utiliza das API's do Google para enviar E-mail
+        }
 
-        private static string Base64UrlEncode(string input) // converte uma string em uma forma segura para ser usada em URLs , trabalha junto com API's Google
+        private static string Base64UrlEncode(string input)
         {
             var inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
             return Convert.ToBase64String(inputBytes)
@@ -220,7 +218,7 @@ namespace FINAL_V2
                 .Replace("=", "");
         }
 
-        private void button1_Click(object sender, EventArgs e) // é a "função" mais importante do formulário,ao clicar no btn1 você estará removendo os produtos vendidos do estoque, gerando Nota Fiscal, salvando ela no desktop e enviando ela por E-mail
+        private void button1_Click(object sender, EventArgs e)
         {
 
             Destinatario = TextBox2.Text;
@@ -279,13 +277,13 @@ namespace FINAL_V2
             while ((DateTime.Now - startTime).TotalMilliseconds < 2000)
             {
                 Application.DoEvents(); // Permitir que a aplicação atualize e responda aos eventos
-        }
+            }
 
             this.Close();
 
         }
 
-        private void AdicionarInformacoesNFADM(int ultimoNumeroNotaID, DateTime dataAtual, string nomeProduto, string valorComercial, decimal lucroTotal) // Gera um relatorio de vendas, é enviado pelo button1
+        private void AdicionarInformacoesNFADM(int ultimoNumeroNotaID, DateTime dataAtual, string nomeProduto, string valorComercial, decimal lucroTotal)
         {
             string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
@@ -325,7 +323,48 @@ namespace FINAL_V2
             }
         }
 
-        private void GerarNotaFiscal(string caminhoCompleto) // recebe valores e atribui a um arquivo xml, é executado pelo button1
+        private int ObterUltimoNumeroNotaIDDoBancoDeDados()
+        {
+            int ultimoNumeroNotaID = 0;
+
+            // Conectar ao banco de dados
+            string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Execute a instrução SQL para inserir um novo registro e obter o último valor inserido na coluna "NotaID"
+                    string query = "SELECT MAX(NotaID) FROM NumNotas";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Obter o valor inserido na coluna "NotaID"
+                        object resultado = command.ExecuteScalar();
+
+                        // Verificar se o resultado não é nulo e pode ser convertido para um número inteiro
+                        if (resultado != null && int.TryParse(resultado.ToString(), out ultimoNumeroNotaID))
+                        {
+                            // Sucesso
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valor inválido retornado pela consulta.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao acessar o banco de dados: " + ex.Message);
+                }
+            }
+
+            return ultimoNumeroNotaID;
+        }
+        // Método para codificar em Base64 URL Safe
+        private void GerarNotaFiscal(string caminhoCompleto)
         {
             // Criação do documento XML
             XmlDocument xmlDoc = new XmlDocument();
@@ -408,7 +447,7 @@ namespace FINAL_V2
 
         }
 
-        private void AtualizarEstoque() // com base nos produtos vendidos retira eles do banco do dados, referente a quantidade vendida, [e executada pelo button1
+        private void AtualizarEstoque()
         {
             string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
@@ -471,46 +510,37 @@ namespace FINAL_V2
                 }
             }
         }
-
-        private int ObterUltimoNumeroNotaIDDoBancoDeDados() // antes do button1 realizar a lógica, ele recebe o ultimo valor de uma NF do Banco de Dados
+        private void Crédito_Load(object sender, EventArgs e)
         {
-            int ultimoNumeroNotaID = 0;
-
-            // Conectar ao banco de dados
-            string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-
-                    // Execute a instrução SQL para inserir um novo registro e obter o último valor inserido na coluna "NotaID"
-                    string query = "SELECT MAX(NotaID) FROM NumNotas";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Obter o valor inserido na coluna "NotaID"
-                        object resultado = command.ExecuteScalar();
-
-                        // Verificar se o resultado não é nulo e pode ser convertido para um número inteiro
-                        if (resultado != null && int.TryParse(resultado.ToString(), out ultimoNumeroNotaID))
-                        {
-                            // Sucesso
-                        }
-                        else
-                        {
-                            MessageBox.Show("Valor inválido retornado pela consulta.");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocorreu um erro ao acessar o banco de dados: " + ex.Message);
-                }
-            }
-
-            return ultimoNumeroNotaID;
+            
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Verifica se existem produtos para exibir informações
+            if (produtos != null && produtos.Count > 0)
+            {
+                // Cria uma mensagem para exibir os detalhes dos produtos
+                string mensagem = "Detalhes dos Produtos:\n\n";
+
+                // Adiciona detalhes de cada produto à mensagem
+                foreach (Vendas.Produto produto in produtos)
+                {
+                    mensagem += $"Nome: {produto.Nome}\n";
+                    mensagem += $"Quantidade: {produto.Quantidade}\n";
+                    mensagem += $"Valor Unitário: {produto.Valor}\n";
+                    mensagem += "\n";
+                }
+
+                // Exibe os detalhes dos produtos em uma MessageBox
+                MessageBox.Show(mensagem, "Detalhes dos Produtos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Se não houver produtos, exibe uma mensagem indicando que não há produtos para mostrar
+                MessageBox.Show("Não há produtos para exibir.", "Sem Produtos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

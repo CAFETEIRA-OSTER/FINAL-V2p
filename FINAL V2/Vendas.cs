@@ -275,12 +275,12 @@ namespace FINAL_V2
             }
             if (e.KeyCode == Keys.F5)
             {
-                Pix pixForm = new Pix();
+                Pix pixForm = new Pix(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
                 pixForm.ShowDialog();
             }
             if (e.KeyCode == Keys.F6)
             {
-                Dinheiro dinheiroForm = new Dinheiro();
+                Dinheiro dinheiroForm = new Dinheiro(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
                 dinheiroForm.ShowDialog();
             }
             // Verifique se a tecla F7 foi pressionada
@@ -529,13 +529,13 @@ namespace FINAL_V2
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Dinheiro dinheiroForm = new Dinheiro();
+            Dinheiro dinheiroForm = new Dinheiro(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
             dinheiroForm.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Pix pixForm = new Pix();
+            Pix pixForm = new Pix(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
             pixForm.ShowDialog();
         }
 

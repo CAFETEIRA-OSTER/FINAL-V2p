@@ -297,6 +297,19 @@ namespace FINAL_V2
                 // Envie o e-mail após a geração da nota fiscal, passando o destinatarioEmail
                 SendEmailWithGmailAPI(caminhoCompleto, Destinatario);
             }
+
+            // Mostrar a barra de progresso
+            progressBar1.Visible = true;
+            progressBar1.Style = ProgressBarStyle.Marquee;
+            progressBar1.MarqueeAnimationSpeed = 2;
+
+            DateTime startTime = DateTime.Now;
+            while ((DateTime.Now - startTime).TotalMilliseconds < 2000)
+            {
+                Application.DoEvents(); // Permitir que a aplicação atualize e responda aos eventos
+            }
+
+            this.Close();
         }
 
         private void AdicionarInformacoesNFADM(int ultimoNumeroNotaID, DateTime dataAtual, string nomeProduto, string valorComercial, decimal lucroTotal)
@@ -334,7 +347,7 @@ namespace FINAL_V2
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocorreu um erro ao adicionar informações à tabela NFADM: " + ex.Message);
+                    
                 }
             }
         }
@@ -428,12 +441,12 @@ namespace FINAL_V2
             desconto.InnerText = valorFormatadoDesconto;
             root.AppendChild(desconto);
 
-            XmlElement valorTotalElement = xmlDoc.CreateElement("ValorTotal");
+            XmlElement valorTotalElement = xmlDoc.CreateElement("Valor_Total");
             valorTotalElement.InnerText = valorFormatadoVendas;
             root.AppendChild(valorTotalElement);
 
-            XmlElement metodoElement = xmlDoc.CreateElement("MétodoDePagamento");
-            valorTotalElement.InnerText = "Débito";
+            XmlElement metodoElement = xmlDoc.CreateElement("Método_De_Pagamento");
+            metodoElement.InnerText = "Débito";
             root.AppendChild(metodoElement);
             // Adicione cada produto à nota fiscal
             foreach (Vendas.Produto produto in produtos)
@@ -448,7 +461,7 @@ namespace FINAL_V2
                 quantidade.InnerText = produto.Quantidade.ToString();
                 produtoElement.AppendChild(quantidade);
 
-                XmlElement precoUnitario = xmlDoc.CreateElement("PrecoUnitario");
+                XmlElement precoUnitario = xmlDoc.CreateElement("Preco_Unitario");
                 precoUnitario.InnerText = (produto.Valor).ToString("F2");
                 produtoElement.AppendChild(precoUnitario);
 
@@ -555,6 +568,11 @@ namespace FINAL_V2
                 // Se não houver produtos, exibe uma mensagem indicando que não há produtos para mostrar
                 MessageBox.Show("Não há produtos para exibir.", "Sem Produtos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void Débito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

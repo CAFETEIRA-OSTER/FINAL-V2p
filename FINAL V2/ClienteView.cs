@@ -71,7 +71,7 @@ namespace FINAL_V2
 
         private void AtualizarPreco()
         {
-            button9.Text = "R$ " + GlobalData.Preco.ToString();
+            button9.Text = "R$ " + GlobalData.Preco.ToString("F2");
             
         }
         private void AtualizarNF()
