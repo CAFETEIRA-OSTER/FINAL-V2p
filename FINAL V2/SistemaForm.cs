@@ -1,4 +1,5 @@
-﻿using FINAL_V2.UsuaryControl;
+﻿using FINAL_V2.RH;
+using FINAL_V2.UsuaryControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,9 @@ namespace FINAL_V2
         private int nivelAcesso;  // Variável para armazenar o nível de acesso do usuário
         private string Operador;
         private Timer timer;
+        private uC_listar ucListarControl;
+        private uC_remover ucRemoverControl;
+
 
         public class GlobalDataSistema
         {
@@ -355,6 +359,32 @@ namespace FINAL_V2
         {
             // Abre o link no navegador padrão
             Process.Start("https://92e41e-2.myshopify.com/?_ab=0&_fd=0&_sc=1");
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+
+            // Cria uma instância do controle de usuário "uC_rh"
+            ucListarControl = new uC_listar(); // Atualiza a instância
+
+            // Define o controle de usuário para preencher o espaço disponível
+            ucListarControl.Dock = DockStyle.Fill;
+
+            // Adiciona o controle de usuário "uC_rh" ao formulário principal
+            panel3.Controls.Clear();  // Limpa os controles existentes
+            panel3.Controls.Add(ucListarControl);
+
+            // Define a visibilidade do controle de usuário como verdadeira
+            ucListarControl.Visible = true;
+
+            // Garante que o controle de usuário "uC_rh" está na frente de outros controles, se necessário
+            ucListarControl.BringToFront();
         }
     }
 }

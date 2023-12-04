@@ -137,7 +137,6 @@
             this.Name = "Crédito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crédito";
-            this.Load += new System.EventHandler(this.Crédito_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

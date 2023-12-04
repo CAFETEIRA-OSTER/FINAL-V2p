@@ -172,6 +172,11 @@
     <Compile Include="ConsultarVendas.Designer.cs">
       <DependentUpon>ConsultarVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Pagamentos\Crédito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,11 +223,34 @@
     <Compile Include="Editaritens.Designer.cs">
       <DependentUpon>Editaritens.cs</DependentUpon>
     </Compile>
+    <Compile Include="RH\uC_listar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RH\uC_listar.Designer.cs">
+      <DependentUpon>uC_listar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RH\uC_registar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RH\uC_registar.Designer.cs">
+      <DependentUpon>uC_registar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RH\uC_remover.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RH\uC_remover.Designer.cs">
+      <DependentUpon>uC_remover.cs</DependentUpon>
+    </Compile>
     <Compile Include="SistemaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SistemaForm.Designer.cs">
       <DependentUpon>SistemaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaYigDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaYigDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="UsuaryControl\Cadastrar.cs">
       <SubType>UserControl</SubType>
@@ -303,6 +331,12 @@
     <EmbeddedResource Include="Editaritens.resx">
       <DependentUpon>Editaritens.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RH\uC_listar.resx">
+      <DependentUpon>uC_listar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RH\uC_registar.resx">
+      <DependentUpon>uC_registar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SistemaForm.resx">
       <DependentUpon>SistemaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -327,6 +361,17 @@
     <EmbeddedResource Include="Vendas.resx">
       <DependentUpon>Vendas.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -337,6 +382,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SistemaYigDataSet.xsc">
+      <DependentUpon>SistemaYigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaYigDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaYigDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SistemaYigDataSet.xss">
+      <DependentUpon>SistemaYigDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -401,6 +457,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\listar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
