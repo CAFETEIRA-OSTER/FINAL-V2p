@@ -124,6 +124,22 @@ namespace FINAL_V2
             {
                 MessageBox.Show("Erro durante o carregamento do formulário: " + ex.ToString());
             }
+            
+
+            // Configurar o intervalo do Timer para 1000 milissegundos (1 segundo)
+            timer2.Interval = 1000;  // Defina o intervalo de acordo com a sua necessidade
+
+            // Assine o evento Tick do Timer
+            timer2.Tick += timer2_Tick;
+
+            // Iniciar o Timer
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // Atualizar a hora atual em tempo real no button4
+            button7.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void NovaNF()

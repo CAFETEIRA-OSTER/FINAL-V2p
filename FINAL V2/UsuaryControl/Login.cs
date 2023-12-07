@@ -6,6 +6,8 @@ namespace FINAL_V2.UsuaryControl
 {
     public partial class Login : UserControl
     {
+
+        private NotifyIcon notifyIcon1;
         // Variável pública para armazenar o nível de acesso
         public int NivelAcesso { get; private set; }
 
@@ -15,8 +17,23 @@ namespace FINAL_V2.UsuaryControl
         public Login()
         {
             InitializeComponent();
-        }
 
+            // Inicialize o NotifyIcon na construção do Login
+            notifyIcon1 = new NotifyIcon();
+            notifyIcon1.Icon = new System.Drawing.Icon(@"C:\ico\icons.ico");
+            notifyIcon1.Visible = true;
+            notifyIcon1.DoubleClick += new EventHandler(notifyIcon1_DoubleClick);
+        }
+        private void notifyIcon1_DoubleClick(object Sender, EventArgs e)
+        {
+            // Ação ao clicar duas vezes no ícone (por exemplo, mostrar o formulário Login novamente)
+            this.Show();
+            Form parentForm = this.FindForm();
+            if (parentForm != null)
+            {
+                parentForm.WindowState = FormWindowState.Normal;
+            }
+        }
         // Manipulador de eventos para o clique no botão de login
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -80,16 +97,19 @@ namespace FINAL_V2.UsuaryControl
                                             NivelAcesso = nivelAcesso;
                                             NomeUsuario = nomeResult.ToString();
 
-
-
-                                            // Oculta o controle de usuário "Login"
-                                            this.Hide();
-
-                                            // Abre o formulário principal (SistemaForm) passando a instância do Login
                                             SistemaForm form1 = new SistemaForm(this);
                                             form1.Show();
 
-                                            
+                                            // Minimiza o formulário pai para a bandeja do sistema
+                                            Form parentForm = this.FindForm(); // Encontra o formulário pai do UserControl
+                                            if (parentForm != null)
+                                            {
+                                                parentForm.WindowState = FormWindowState.Minimized;
+                                            }
+
+                                            notifyIcon1.Visible = true;
+                                            notifyIcon1.ShowBalloonTip(1000);
+
 
                                         }
                                         else
@@ -112,7 +132,7 @@ namespace FINAL_V2.UsuaryControl
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocorreu um erro ao conectar-se ao banco de dados: " + ex.Message);
+                    
                 }
             }
         }

@@ -59,6 +59,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             this.panel1.BackgroundImage = global::FINAL_V2.Properties.Resources.cad;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label4);
@@ -383,6 +385,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cadastro de Itens";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.DimGray;
+            this.label12.Location = new System.Drawing.Point(625, 448);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(307, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
+            // 
             // Cadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,5 +443,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lucro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Seção;
+        private System.Windows.Forms.Label label12;
     }
 }

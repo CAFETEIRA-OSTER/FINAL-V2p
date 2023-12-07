@@ -25,6 +25,9 @@ namespace FINAL_V2
 
 
         }
+
+       
+
         private void LoginForm_KeyUp(object sender, KeyEventArgs e)
         {
             // Verifica se a tecla F1 foi pressionada

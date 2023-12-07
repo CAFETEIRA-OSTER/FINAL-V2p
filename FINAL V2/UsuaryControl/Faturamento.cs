@@ -36,7 +36,7 @@ namespace FINAL_V2.UsuaryControl
             string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
 
             // Crie uma consulta SQL para obter os dados desejados da tabela NFADM com base na data
-            string sqlQuery = "SELECT NomeProduto, IDNota, ValorComercial, Lucro, Quantidade FROM NFADM " +
+            string sqlQuery = "SELECT NomeProduto, IDNota, ValorComercial, Lucro FROM NFADM " +
                               "WHERE Data >= @DataLimite";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -69,7 +69,7 @@ namespace FINAL_V2.UsuaryControl
                         // Adicione os dados ao DataGridView sem gerar novas colunas
                         foreach (DataRow row in dataTable.Rows)
                         {
-                            dataGridView1.Rows.Add(row["NomeProduto"], row["IDNota"], row["ValorComercial"], row["Lucro"], row["Quantidade"]);
+                            dataGridView1.Rows.Add(row["NomeProduto"], row["IDNota"], row["ValorComercial"], row["Lucro"]);
 
                             // Some o ValorComercial e o Lucro às variáveis de soma
                             somaValorComercial += Convert.ToDecimal(row["ValorComercial"]);
@@ -101,6 +101,11 @@ namespace FINAL_V2.UsuaryControl
         private void button2_Click(object sender, EventArgs e)
         {
 
-        }     
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace FINAL_V2.RH
 {
     public partial class uC_listar : UserControl
     {
+
+        public string nomeSelecionado;
         public PictureBox PictureBoxFuncionario => pictureBox2;
 
         public string NomeSelecionado { get; set; }
@@ -36,12 +38,12 @@ namespace FINAL_V2.RH
         public void atualizarLabels(string nome, string idade, string cargo, string telefone, string email, string endereco, string rg, string cpf, string ctps, string salario, string conta)
         {
             // Atualiza os labels com os valores do banco de dados
-            lblNome.Text = nome;
+            textBox2.Text = nome;
             lblIdade.Text = idade;
             lblCargo.Text = cargo;
             lblTelefone.Text = telefone;
             lblEmail.Text = email;
-            lblEndereco.Text = endereco;
+            textBox1.Text = endereco;
             lblRg.Text = rg;
             lblCpf.Text = cpf;
             lblCtps.Text = ctps;
@@ -115,12 +117,12 @@ namespace FINAL_V2.RH
                                 string caminhoDaImagem = reader["caminho_fotos"].ToString();
 
                                 // Atualize os labels
-                                lblNome.Text = nome;
+                                textBox2.Text = nome;
                                 lblIdade.Text = idade;
                                 lblCargo.Text = cargo;
                                 lblTelefone.Text = telefone;
                                 lblEmail.Text = email;
-                                lblEndereco.Text = endereco;
+                                textBox1.Text = endereco;
                                 lblRg.Text = rg;
                                 lblCpf.Text = cpf;
                                 lblCtps.Text = ctps;
@@ -181,6 +183,74 @@ namespace FINAL_V2.RH
         }
 
         private void lblEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Verifica se um item está selecionado na ComboBox
+            if (comboBox1.SelectedItem != null)
+            {
+                nomeSelecionado = comboBox1.SelectedItem.ToString();
+
+                DialogResult resultado = MessageBox.Show(
+                    "Tem certeza que deseja remover " + nomeSelecionado + " do sistema?",
+                    "Confirmação",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Verifica a resposta do usuário
+                if (resultado == DialogResult.Yes)
+                {
+                    // Conexão com o banco de dados para buscar os detalhes do usuário
+                    string connectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        // Apagar do BD
+                        try
+                        {
+                            connection.Open();
+
+                            // Consulta SQL para excluir o registro com base no nome
+                            string queryDelete = "DELETE FROM funcionariosrh WHERE nome = @Nome";
+                            SqlCommand commandDelete = new SqlCommand(queryDelete, connection);
+                            commandDelete.Parameters.AddWithValue("@Nome", nomeSelecionado);
+
+                            int rowsAffected = commandDelete.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show(nomeSelecionado + " foi removido com sucesso!");
+
+                                // Atualize a ComboBox para refletir a remoção
+                                CarregarNomesFuncionarios();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nenhum registro foi removido.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao remover o registro: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Remoção cancelada!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Não há nenhum nome selecionado!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

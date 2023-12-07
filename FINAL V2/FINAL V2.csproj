@@ -177,6 +177,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="notifyIcon1.cs" />
     <Compile Include="Pagamentos\Crédito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,17 +230,11 @@
     <Compile Include="RH\uC_listar.Designer.cs">
       <DependentUpon>uC_listar.cs</DependentUpon>
     </Compile>
-    <Compile Include="RH\uC_registar.cs">
+    <Compile Include="RH\uC_registrar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RH\uC_registar.Designer.cs">
-      <DependentUpon>uC_registar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RH\uC_remover.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RH\uC_remover.Designer.cs">
-      <DependentUpon>uC_remover.cs</DependentUpon>
+    <Compile Include="RH\uC_registrar.Designer.cs">
+      <DependentUpon>uC_registrar.cs</DependentUpon>
     </Compile>
     <Compile Include="SistemaForm.cs">
       <SubType>Form</SubType>
@@ -334,8 +329,8 @@
     <EmbeddedResource Include="RH\uC_listar.resx">
       <DependentUpon>uC_listar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RH\uC_registar.resx">
-      <DependentUpon>uC_registar.cs</DependentUpon>
+    <EmbeddedResource Include="RH\uC_registrar.resx">
+      <DependentUpon>uC_registrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SistemaForm.resx">
       <DependentUpon>SistemaForm.cs</DependentUpon>
@@ -460,6 +455,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\listar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\listar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

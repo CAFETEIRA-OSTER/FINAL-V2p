@@ -23,7 +23,7 @@ namespace FINAL_V2
         private string Operador;
         private Timer timer;
         private uC_listar ucListarControl;
-        private uC_remover ucRemoverControl;
+
 
 
         public class GlobalDataSistema
@@ -329,8 +329,12 @@ namespace FINAL_V2
                 financeiroToolStripMenuItem1.Enabled = false;
                 vendasToolStripMenuItem1.Enabled = false;
             }
-            
 
+            // Fecha o formulário de login após o carregamento completo do SistemaForm
+            if (this.Owner != null && this.Owner is LoginForm)
+            {
+                (this.Owner as LoginForm).Close();
+            }
         }
 
 
@@ -363,7 +367,23 @@ namespace FINAL_V2
 
         private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
 
+            // Cria uma instância do controle de usuário "uC_rh"
+            uC_registrar RH = new uC_registrar();
+
+            // Define o controle de usuário para preencher o espaço disponível
+            RH.Dock = DockStyle.Fill;
+
+            // Adiciona o controle de usuário "uC_rh" ao formulário principal
+            panel3.Controls.Clear();  // Limpa os controles existentes
+            panel3.Controls.Add(RH);
+
+            // Define a visibilidade do controle de usuário como verdadeira
+            RH.Visible = true;
+
+            // Garante que o controle de usuário "uC_rh" está na frente de outros controles, se necessário
+            RH.BringToFront();
         }
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
