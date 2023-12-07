@@ -15,7 +15,7 @@ namespace FINAL_V2
     public partial class ClienteView : Form
     {
         
-        
+       
         List<Produto> produtosCadastradosClienteView = new List<Produto>();
         ProdutoRepository produtoRepository = new ProdutoRepository();
 
@@ -71,8 +71,10 @@ namespace FINAL_V2
 
         private void AtualizarPreco()
         {
-            button9.Text = "R$ " + GlobalData.Preco.ToString("F2");
-            
+            button13.Text = "R$ " + GlobalData.Preco.ToString("F2");
+            button11.Text = "R$ " + (GlobalData.DescontoView / 100).ToString("F2");
+            button9.Text = "R$" + (GlobalData.Preco + (GlobalData.DescontoView / 100)).ToString("F2") ;
+
         }
         private void AtualizarNF()
         {
@@ -82,6 +84,7 @@ namespace FINAL_V2
         {
             
             button3.Text = GlobalDataSistema.OperadorGlobal;
+
         }
         private void AtualizaDados()
         {
@@ -170,7 +173,9 @@ namespace FINAL_V2
         {
             // Atribuir a data atual ao button5
             button5.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            
+            dataGridView1.Focus();
+
+
         }
 
         private void button7_Click_1(object sender, EventArgs e)
@@ -189,6 +194,16 @@ namespace FINAL_V2
         }
 
         private void panel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel16_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }

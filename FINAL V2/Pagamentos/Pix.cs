@@ -185,7 +185,7 @@ namespace FINAL_V2
                 {
                     Text = "Ola,\n\n" +
                        "Segue em Anexo sua Nota Fiscal,\n" +
-                       "Obrigado por compra na BOOK.IN,\n\n" +
+                       "Obrigado por comprar na BOOK.IN,\n\n" +
                        "Volte sempre."
                 };
 

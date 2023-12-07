@@ -35,13 +35,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,9 +107,9 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.button2.Location = new System.Drawing.Point(57, 326);
+            this.button2.Location = new System.Drawing.Point(58, 270);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(276, 87);
+            this.button2.Size = new System.Drawing.Size(276, 83);
             this.button2.TabIndex = 8;
             this.button2.Text = "Remover Coluna";
             this.button2.UseVisualStyleBackColor = true;
@@ -122,11 +123,30 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Data});
             this.dataGridView1.Location = new System.Drawing.Point(370, 57);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 356);
+            this.dataGridView1.Size = new System.Drawing.Size(545, 356);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(58, 126);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(229, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.button3.Location = new System.Drawing.Point(57, 359);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(276, 50);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Gerar relatório";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Column1
             // 
@@ -156,36 +176,29 @@
             this.Column4.ReadOnly = true;
             this.Column4.Width = 70;
             // 
-            // Column5
+            // Data
             // 
-            this.Column5.HeaderText = "Vendas";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 70;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.Width = 70;
             // 
-            // dateTimePicker1
+            // label6
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(58, 126);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(229, 20);
-            this.dateTimePicker1.TabIndex = 14;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.button3.Location = new System.Drawing.Point(57, 270);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(276, 50);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Gerar relatório";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(608, 438);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(307, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
             // 
             // Faturamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::FINAL_V2.Properties.Resources.Faturamento1;
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridView1);
@@ -212,12 +225,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.Label label6;
     }
 }

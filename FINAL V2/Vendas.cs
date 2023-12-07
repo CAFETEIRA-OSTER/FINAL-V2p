@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using FINAL_V2;
 using static FINAL_V2.SistemaForm;
 
@@ -21,8 +22,11 @@ namespace FINAL_V2
         public decimal DescontoTotal { get; set; }
         public decimal NumeroNF { get; set; }
 
+        
+
         public class GlobalData
         {
+            public static decimal DescontoView { get; set; }
             public static decimal Preco { get; set; }
             public static decimal NF { get; set; }
         }
@@ -34,6 +38,7 @@ namespace FINAL_V2
             public decimal Valor { get; set; }
 
         }
+
 
         private bool isDragging = false;
         private Point lastCursorPos;
@@ -140,6 +145,7 @@ namespace FINAL_V2
         {
             // Atualizar a hora atual em tempo real no button4
             button7.Text = DateTime.Now.ToString("HH:mm:ss");
+            GlobalData.DescontoView = DescontoTotal;
         }
 
         private void NovaNF()

@@ -118,11 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="log" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\log.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconRest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconRest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consulta1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconResta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconResta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ssssssss" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ssssssss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YiG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YiG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Faturamento1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Faturamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="consult21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\consult21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,73 +145,70 @@
   <data name="q" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\q.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Consulta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Consulta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="YiG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\YiG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="consult" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\consult.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LOGINCADASTRO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOGINCADASTRO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Faturamento1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Faturamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="registrar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\registrar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="registrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\registrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cadastrarx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cadastrarx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Consulta1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Consulta1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="YiG(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YiG(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="YiG(2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\YiG(2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Faturamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Faturamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cadastrarx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cadastrarx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LOGIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGIN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="listar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\listar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Faturamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Faturamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LOGINCADASTRO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGINCADASTRO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aaa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aaa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="listar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\listar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconResta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconResta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="registrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\registrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconRest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconRest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="YiG(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\YiG(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LOGIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOGIN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cadastrarx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cadastrarx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="log1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\log1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="log" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\log.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="registrar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\registrar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cadastrarx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cadastrarx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slave1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slave1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Consulta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slave2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slave2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
