@@ -137,7 +137,6 @@
             this.Name = "Débito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Débito";
-            this.Load += new System.EventHandler(this.Débito_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,6 +17,7 @@ namespace FINAL_V2
             cn.ConnectionString = "Data Source=26.170.34.113;Initial Catalog=SistemaYiG;User ID=sa;Password=123";
             return cn;
         }
+
         public DataSet GetData(String consulta)
         {
             SqlConnection cn = Conexão();

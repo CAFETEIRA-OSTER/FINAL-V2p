@@ -44,7 +44,6 @@
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.financeiroToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.saláriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.faturamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionáriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,10 +51,10 @@
             this.ajudaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -116,7 +115,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(965, 30);
             this.panel4.TabIndex = 1;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SistemaForm_MouseClick);
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
@@ -194,7 +192,6 @@
             this.estoqueToolStripMenuItem1.Name = "estoqueToolStripMenuItem1";
             this.estoqueToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
             this.estoqueToolStripMenuItem1.Text = "Estoque";
-            this.estoqueToolStripMenuItem1.Click += new System.EventHandler(this.estoqueToolStripMenuItem1_Click);
             // 
             // cadastrarToolStripMenuItem
             // 
@@ -213,7 +210,6 @@
             // financeiroToolStripMenuItem1
             // 
             this.financeiroToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saláriosToolStripMenuItem1,
             this.faturamentoToolStripMenuItem1});
             this.financeiroToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.financeiroToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Gray;
@@ -221,16 +217,10 @@
             this.financeiroToolStripMenuItem1.Size = new System.Drawing.Size(74, 20);
             this.financeiroToolStripMenuItem1.Text = "Financeiro";
             // 
-            // saláriosToolStripMenuItem1
-            // 
-            this.saláriosToolStripMenuItem1.Name = "saláriosToolStripMenuItem1";
-            this.saláriosToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
-            this.saláriosToolStripMenuItem1.Text = "Salários";
-            // 
             // faturamentoToolStripMenuItem1
             // 
             this.faturamentoToolStripMenuItem1.Name = "faturamentoToolStripMenuItem1";
-            this.faturamentoToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.faturamentoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.faturamentoToolStripMenuItem1.Text = "Faturamento";
             this.faturamentoToolStripMenuItem1.Click += new System.EventHandler(this.faturamentoToolStripMenuItem1_Click);
             // 
@@ -247,14 +237,14 @@
             // registrarToolStripMenuItem
             // 
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarToolStripMenuItem.Text = "Registrar";
             this.registrarToolStripMenuItem.Click += new System.EventHandler(this.registrarToolStripMenuItem_Click);
             // 
             // listarToolStripMenuItem
             // 
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listarToolStripMenuItem.Text = "Listar";
             this.listarToolStripMenuItem.Click += new System.EventHandler(this.listarToolStripMenuItem_Click);
             // 
@@ -289,18 +279,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(965, 473);
             this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // contextMenuStrip1
+            // label6
             // 
-            this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(3, 452);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(307, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
             // 
             // label5
             // 
@@ -313,16 +302,16 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Version 1.0.1  ║   08/12/23   ║   YIG Corp Ltda";
             // 
-            // label6
+            // contextMenuStrip1
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(3, 452);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(307, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
+            this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // SistemaForm
             // 
@@ -360,7 +349,6 @@
         private System.Windows.Forms.ToolStripMenuItem vendasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem saláriosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem faturamentoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem1;

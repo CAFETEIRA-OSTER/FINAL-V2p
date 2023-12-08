@@ -6,9 +6,11 @@ using System.Windows.Forms;
 public class KeyboardHook
 {
     private const int WH_KEYBOARD_LL = 13;
+
     private const int WM_KEYDOWN = 0x0100;
 
     private static IntPtr hookId = IntPtr.Zero;
+
     private static LowLevelKeyboardProc hookCallback;
 
     public static event EventHandler<KeyPressedEventArgs> KeyPressed;

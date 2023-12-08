@@ -6,6 +6,7 @@ namespace FINAL_V2
 {
     internal class MeuNotifyIcon
     {
+
         private NotifyIcon notifyIcon1;
 
         public MeuNotifyIcon()
@@ -21,5 +22,6 @@ namespace FINAL_V2
             LoginForm form = new LoginForm();
             form.Show();
         }
+
     }
 }

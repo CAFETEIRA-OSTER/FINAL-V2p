@@ -33,6 +33,7 @@ namespace FINAL_V2
         private List<Vendas.Produto> produtos;
 
         private string Destinatario;
+
         public static TextBox TextBox2 { get; set; }
 
         public Dinheiro(Vendas valorTotal, List<Vendas.Produto> produtos)
@@ -81,6 +82,7 @@ namespace FINAL_V2
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void Crédito_KeyDown(object sender, KeyEventArgs e)
         {
             // Verifica se a tecla pressionada é a tecla F10
@@ -409,7 +411,7 @@ namespace FINAL_V2
 
             return ultimoNumeroNotaID;
         }
-        // Método para codificar em Base64 URL Safe
+       
         private void GerarNotaFiscal(string caminhoCompleto)
         {
             // Criação do documento XML
@@ -593,11 +595,6 @@ namespace FINAL_V2
             }
         }
 
-        private void Dinheiro_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Verificar se o TextBox3 não está vazio
@@ -638,7 +635,6 @@ namespace FINAL_V2
                 
             }
         }
-
 
     }
 }

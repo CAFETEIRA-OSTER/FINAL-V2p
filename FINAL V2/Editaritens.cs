@@ -16,6 +16,7 @@ namespace FINAL_V2
     {
 
         private Cadastrar formCadastrar;
+
         private int idSelecionado;
 
         public Editaritens(Cadastrar formCadastrar, int idSelecionado)
@@ -98,7 +99,6 @@ namespace FINAL_V2
                 }
             }
         }
-
 
         private void Editaritens_Load(object sender, EventArgs e)
         {

@@ -14,12 +14,11 @@ namespace FINAL_V2
 {
     public partial class ClienteView : Form
     {
-        
-       
+  
         List<Produto> produtosCadastradosClienteView = new List<Produto>();
+
         ProdutoRepository produtoRepository = new ProdutoRepository();
 
-        // Criar um objeto Produto
         Produto novoProduto = new Produto
         {
             Id = 1,
@@ -28,9 +27,9 @@ namespace FINAL_V2
             Valor = 100.0m,
             
         };
+
         private BindingList<Vendas.Produto> produtosExibicao = new BindingList<Vendas.Produto>();
 
-        
         public ClienteView()
         {
             
@@ -59,8 +58,6 @@ namespace FINAL_V2
 
         }
 
-
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             AtualizarDataGrid();
@@ -76,39 +73,25 @@ namespace FINAL_V2
             button9.Text = "R$" + (GlobalData.Preco + (GlobalData.DescontoView / 100)).ToString("F2") ;
 
         }
+
         private void AtualizarNF()
         {
             button6.Text = "CUPOM FISCAL NÚMERO: " + GlobalData.NF.ToString();
         }
+
         private void AtualizarOperador()
         {
             
             button3.Text = GlobalDataSistema.OperadorGlobal;
 
         }
+
         private void AtualizaDados()
         {
             button6.Text = GlobalData.NF.ToString();
             button3.Text = GlobalDataSistema.OperadorGlobal;
         }
 
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        // No formulário ClienteView (button7_Click)
         private void AtualizarDataGrid()
         {
             dataGridView1.Rows.Clear();
@@ -134,35 +117,6 @@ namespace FINAL_V2
 
         }
 
-
-
-
-
-
-
-        // Adicione este método para atualizar o DataGridView com os novos dados
-
-
-
-
-
-
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             // Atualizar a hora atual em tempo real no button4
@@ -178,35 +132,6 @@ namespace FINAL_V2
 
         }
 
-        private void button7_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel15_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel16_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 
 }

@@ -137,7 +137,7 @@ namespace FINAL_V2
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocorreu um erro ao calcular o lucro total: " + ex.Message);
+                    
                 }
             }
 
@@ -206,7 +206,7 @@ namespace FINAL_V2
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("An error occurred: " + ex.Message);
+                    
                 }
             }
         } // essa função utiliza das API's do Google para enviar E-mail
@@ -512,5 +512,7 @@ namespace FINAL_V2
 
             return ultimoNumeroNotaID;
         }
+
+
     }
 }

@@ -18,6 +18,7 @@ namespace FINAL_V2.RH
     {
 
         public string nomeSelecionado;
+
         public PictureBox PictureBoxFuncionario => pictureBox2;
 
         public string NomeSelecionado { get; set; }
@@ -162,31 +163,6 @@ namespace FINAL_V2.RH
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblTelefone_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblRg_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEndereco_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEmail_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             // Verifica se um item está selecionado na ComboBox
@@ -250,9 +226,5 @@ namespace FINAL_V2.RH
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +68,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(890, 500);
             this.panel1.TabIndex = 3;
+
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(292, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(307, 13);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(35)))));
+            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.Location = new System.Drawing.Point(342, 479);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(202, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Version 1.0.1  ║   08/12/23   ║   YIG Ltda";
             // 
             // button2
             // 
@@ -202,28 +225,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(208, 16);
             this.textBox1.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(35)))));
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(342, 479);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 13);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Version 1.0.1  ║   08/12/23   ║   YIG Ltda";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(292, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(307, 13);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
             // 
             // Cadastro
             // 

@@ -5,15 +5,10 @@ using MimeKit;
 using QRCoder;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -61,6 +56,7 @@ namespace FINAL_V2
             valorFormatadoDesconto = valorTotalDesconto.ToString("N2");
 
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
@@ -73,6 +69,7 @@ namespace FINAL_V2
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void Crédito_KeyDown(object sender, KeyEventArgs e)
         {
             // Verifica se a tecla pressionada é a tecla F10
@@ -393,7 +390,7 @@ namespace FINAL_V2
 
             return ultimoNumeroNotaID;
         }
-        // Método para codificar em Base64 URL Safe
+        
         private void GerarNotaFiscal(string caminhoCompleto)
         {
             // Criação do documento XML
@@ -539,10 +536,6 @@ namespace FINAL_V2
                 }
             }
         }
-        private void Crédito_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -570,6 +563,7 @@ namespace FINAL_V2
                 MessageBox.Show("Não há produtos para exibir.", "Sem Produtos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private void Pix_Load(object sender, EventArgs e)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
@@ -579,16 +573,5 @@ namespace FINAL_V2
             pictureBox1.Image = qrCodeImage;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

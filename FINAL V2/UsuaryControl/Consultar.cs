@@ -22,7 +22,6 @@ namespace FINAL_V2.UsuaryControl
             textBox1.KeyDown += TextBox1_KeyDown;
         }
 
-
         private void TextBox2_KeyDown(object sender, KeyEventArgs e)
         {
             // Verifique se a tecla pressionada é Enter
@@ -42,6 +41,7 @@ namespace FINAL_V2.UsuaryControl
                 ExibirDadosNoDataGridViewID();
             }
         }
+
         private void ExibirDadosNoDataGridViewID()
         {
             // Conectar ao banco de dados
@@ -86,6 +86,7 @@ namespace FINAL_V2.UsuaryControl
                 }
             }
         }
+
         private void ExibirDadosNoDataGridView()
         {
             // Conectar ao banco de dados
@@ -131,49 +132,5 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

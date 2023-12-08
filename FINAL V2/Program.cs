@@ -12,6 +12,7 @@ namespace FINAL_V2
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
             Application.EnableVisualStyles();

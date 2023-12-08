@@ -19,10 +19,10 @@ namespace FINAL_V2
     public partial class Vendas : Form
     {
         public decimal ValorTotal { get; set; }
-        public decimal DescontoTotal { get; set; }
-        public decimal NumeroNF { get; set; }
 
-        
+        public decimal DescontoTotal { get; set; }
+
+        public decimal NumeroNF { get; set; }
 
         public class GlobalData
         {
@@ -30,6 +30,7 @@ namespace FINAL_V2
             public static decimal Preco { get; set; }
             public static decimal NF { get; set; }
         }
+
         public class Produto
         {
             public int Id { get; set; }
@@ -41,25 +42,37 @@ namespace FINAL_V2
 
 
         private bool isDragging = false;
+
         private Point lastCursorPos;
+
         private Point lastFormPos;
         
         private int valorLabel = 0;
+
         private List<Produto> produtosCadastrados = new List<Produto>();
+
         private decimal somaTotal = 1;
+
         private decimal somaTotal2 = 0;
+
         private decimal somaTotal3 = 0;
+
         private decimal somaTotala = 1;
+
         private int linhaSelecionada = -1;
+
         private Desconto descontoForm;
+
         public decimal DescontoValue { get; set; }
+
         private ClienteView clienteViewForm;
+
         private List<Produto> produtosExportados = new List<Produto>();
+
         private List<int> produtosExibicaoIDs = new List<int>();
+
         private string teste;
-
-
-        
+       
         public List<Produto> produtosSelecionados { get; set; }
         public int ValorLabel
         {
@@ -70,8 +83,6 @@ namespace FINAL_V2
                 
             }
         }
-
-        
 
         public Vendas(decimal somaTotal, List<Vendas.Produto> produtosCadastrados)
         {
@@ -177,6 +188,7 @@ namespace FINAL_V2
                 }
             }
         }
+
         private void TimerAtualizarSoma_Tick(object sender, EventArgs e)
         {
             // Executa a função para atualizar a soma total a cada segundo
@@ -374,6 +386,7 @@ namespace FINAL_V2
             }
 
         }
+
         private void Desconto_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Atualize a soma total no formulário de vendas
@@ -381,8 +394,6 @@ namespace FINAL_V2
             
         }
         
-        
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e) // adicionar intens
         {
             int id;
@@ -480,12 +491,6 @@ namespace FINAL_V2
             }
         }
 
-        private void button7_Click(object sender, EventArgs e) // gerar qr
-        {
-
-            
-        }
-
         private void button10_Click_1(object sender, EventArgs e)
         {
 
@@ -542,13 +547,6 @@ namespace FINAL_V2
             
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
         private void button6_Click(object sender, EventArgs e)
         {
             Dinheiro dinheiroForm = new Dinheiro(this, DadosDoDataGridViewSingleton.Instance.DadosDoDataGridView.ToList());
@@ -603,21 +601,17 @@ namespace FINAL_V2
             }
         }
 
-        private void panel19_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void button7_Click_1(object sender, EventArgs e)
             {
                 this.WindowState = FormWindowState.Normal;
             }
 
-            private void button16_Click(object sender, EventArgs e)
+        private void button16_Click(object sender, EventArgs e)
             {
                 this.WindowState = FormWindowState.Maximized;
             }
 
-            private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
 
             }
@@ -642,8 +636,6 @@ namespace FINAL_V2
                 }
             }
         }
-
-
 
         private void AtualizarDataGridView2()
         {
@@ -684,8 +676,6 @@ namespace FINAL_V2
             }
         }
 
-
-
         public void AdicionarLinhaAoDataGridView(List<object> informacoesLinha)
         {
             if (informacoesLinha.Count > 0)
@@ -705,24 +695,5 @@ namespace FINAL_V2
             }
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel14_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel11_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

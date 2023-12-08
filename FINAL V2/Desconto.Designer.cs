@@ -82,7 +82,7 @@
             this.label4.Size = new System.Drawing.Size(110, 31);
             this.label4.TabIndex = 4;
             this.label4.Text = "(/) -10%";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+
             // 
             // label5
             // 
@@ -95,7 +95,7 @@
             this.label5.Size = new System.Drawing.Size(69, 76);
             this.label5.TabIndex = 5;
             this.label5.Text = "0";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+
             // 
             // pictureBox1
             // 
@@ -136,7 +136,6 @@
             this.Name = "Desconto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Desconto";
-            this.Load += new System.EventHandler(this.Desconto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Desconto_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Desconto_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

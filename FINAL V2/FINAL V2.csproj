@@ -285,12 +285,6 @@
     <Compile Include="UsuaryControl\Cadastro.Designer.cs">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsuaryControl\Checkout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsuaryControl\Checkout.Designer.cs">
-      <DependentUpon>Checkout.cs</DependentUpon>
-    </Compile>
     <Compile Include="UsuaryControl\Consultar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -366,9 +360,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuaryControl\Cadastro.resx">
       <DependentUpon>Cadastro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsuaryControl\Checkout.resx">
-      <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuaryControl\Consultar.resx">
       <DependentUpon>Consultar.cs</DependentUpon>

@@ -17,20 +17,23 @@ namespace FINAL_V2
     public partial class SistemaForm : Form
     {
         private bool isDragging = false;  // Variável para rastrear se o formulário está sendo arrastado
+
         private Point lastCursorPosition;  // Armazena a última posição do cursor durante o arrasto
+
         private Desconto descontoForm;  // Instância do formulário de desconto
+
         private int nivelAcesso;  // Variável para armazenar o nível de acesso do usuário
+
         private string Operador;
+
         private Timer timer;
+
         private uC_listar ucListarControl;
-
-
 
         public class GlobalDataSistema
         {
             public static string OperadorGlobal { get; set; }
         }
-
 
         // Construtor do formulário, recebe uma instância do formulário de login (ou controle de usuário)
         public SistemaForm(Login loginForm)
@@ -264,7 +267,6 @@ namespace FINAL_V2
             }
         }
 
-
         // Manipulador de eventos para o item de menu de consultar
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -337,26 +339,10 @@ namespace FINAL_V2
             }
         }
 
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             // Atualiza o label3 com o horário atual
             label3.Text = DateTime.Now.ToString("HH:mm:ss");
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void estoqueToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void ajudaToolStripMenuItem1_Click(object sender, EventArgs e)

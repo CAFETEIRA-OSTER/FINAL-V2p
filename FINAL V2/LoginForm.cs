@@ -12,9 +12,7 @@ using System.Windows.Forms;
 namespace FINAL_V2
 {
     public partial class LoginForm : Form
-    {
-
-        
+    {   
         public LoginForm()
         {
             InitializeComponent();
@@ -26,8 +24,6 @@ namespace FINAL_V2
 
         }
 
-       
-
         private void LoginForm_KeyUp(object sender, KeyEventArgs e)
         {
             // Verifica se a tecla F1 foi pressionada
@@ -37,6 +33,7 @@ namespace FINAL_V2
                 MessageBox.Show("Você pressionou a tecla F1!");
             }// Lógica a ser executada quando uma tecla é liberada no formulário
         }
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
             // Criar uma instância do controle de usuário "Login"

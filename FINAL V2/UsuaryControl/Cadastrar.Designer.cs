@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +97,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(963, 478);
             this.panel1.TabIndex = 1;
+
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.DimGray;
+            this.label12.Location = new System.Drawing.Point(625, 448);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(307, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
             // 
             // button3
             // 
@@ -193,7 +205,7 @@
             this.label8.Size = new System.Drawing.Size(41, 20);
             this.label8.TabIndex = 19;
             this.label8.Text = "Tipo";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+
             // 
             // label7
             // 
@@ -230,7 +242,7 @@
             this.label5.Size = new System.Drawing.Size(53, 20);
             this.label5.TabIndex = 16;
             this.label5.Text = "Nome";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+
             // 
             // cmbSecao
             // 
@@ -384,17 +396,6 @@
             this.label1.Size = new System.Drawing.Size(211, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cadastro de Itens";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.ForeColor = System.Drawing.Color.DimGray;
-            this.label12.Location = new System.Drawing.Point(625, 448);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(307, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "No copiright ® ║   Todos os direitos reservados a YIG Corp Ltda";
             // 
             // Cadastrar
             // 

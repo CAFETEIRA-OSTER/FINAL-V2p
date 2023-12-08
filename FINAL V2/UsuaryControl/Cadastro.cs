@@ -17,6 +17,7 @@ namespace FINAL_V2.UsuaryControl
         {
             InitializeComponent();
         }
+
         private void button1_Click_1(object sender, EventArgs e)// Cadastro de usuário
         {
 
@@ -99,6 +100,5 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-        
     }
 }

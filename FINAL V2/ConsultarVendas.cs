@@ -144,8 +144,7 @@ namespace FINAL_V2
 
             // Atualize o índice da última linha selecionada
             lastSelectedRowIndex = rowIndex;
-        }
-        
+        } 
 
         private void AdicionarLinhaAoFormVendas()
         {
@@ -168,20 +167,6 @@ namespace FINAL_V2
                 (this.ParentForm as Vendas)?.AdicionarLinhaAoDataGridView(informacoesLinha);
             }
         }
-        
 
-
-
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void ConsultarVendas_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

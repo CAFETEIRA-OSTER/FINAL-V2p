@@ -250,7 +250,7 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(57, 116);
             this.panel11.TabIndex = 0;
-            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
+
             // 
             // panel10
             // 
@@ -298,7 +298,7 @@
             this.button11.TabIndex = 1;
             this.button11.Text = "Consultar(F8)";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+
             // 
             // button10
             // 
@@ -370,7 +370,7 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(57, 642);
             this.panel14.TabIndex = 0;
-            this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
+
             // 
             // panel13
             // 
@@ -487,7 +487,7 @@
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(783, 90);
             this.panel19.TabIndex = 0;
-            this.panel19.Paint += new System.Windows.Forms.PaintEventHandler(this.panel19_Paint);
+
             this.panel19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel19_MouseDown);
             this.panel19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel19_MouseMove);
             this.panel19.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel19_MouseUp);
@@ -500,7 +500,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(783, 32);
             this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // panel18

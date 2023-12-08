@@ -44,6 +44,7 @@ namespace FINAL_V2.UsuaryControl
                 ExibirDadosNoDataGridViewID();
             }
         }
+
         private void ExibirDadosNoDataGridViewID()
         {
             // Conectar ao banco de dados
@@ -88,6 +89,7 @@ namespace FINAL_V2.UsuaryControl
                 }
             }
         }
+
         private void ExibirDadosNoDataGridView()
         {
             // Conectar ao banco de dados
@@ -131,16 +133,6 @@ namespace FINAL_V2.UsuaryControl
                     MessageBox.Show("Ocorreu um erro ao acessar o banco de dados: " + ex.ToString());
                 }
             }
-        }
-
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -209,7 +201,6 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-
         private void button3_Click(object sender, EventArgs e)
         {
             // Verifica se há pelo menos uma linha selecionada no DataGridView
@@ -231,8 +222,6 @@ namespace FINAL_V2.UsuaryControl
                 MessageBox.Show("Por favor, selecione uma linha.", "Nenhuma Linha Selecionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
 
         public int ObterIDSelecionado()
         {
@@ -299,13 +288,6 @@ namespace FINAL_V2.UsuaryControl
                 }
             }
         }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        // Variável pública para armazenar o ID selecionado
 
     }
 }

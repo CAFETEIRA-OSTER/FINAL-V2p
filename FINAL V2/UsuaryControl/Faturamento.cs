@@ -16,25 +16,15 @@ namespace FINAL_V2.UsuaryControl
     public partial class Faturamento : UserControl
     {
 
-        
-
         public Faturamento()
         {
             InitializeComponent();
         }
 
-        private void Faturamento_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             ChamarDados();
         }
-
 
         private void ChamarDados()
         {
@@ -97,11 +87,6 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-
-
-
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             // Obtém os IDs dos registros selecionados no DataGridView
@@ -152,11 +137,6 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
         private DataTable ConvertToDataTable(DataGridView dataGridView)
         {
             DataTable dt = new DataTable();
@@ -222,5 +202,6 @@ namespace FINAL_V2.UsuaryControl
                 MessageBox.Show("Não há dados para exportar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
     }
 }

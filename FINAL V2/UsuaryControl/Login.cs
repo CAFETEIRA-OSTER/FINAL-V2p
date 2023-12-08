@@ -24,6 +24,7 @@ namespace FINAL_V2.UsuaryControl
             notifyIcon1.Visible = true;
             notifyIcon1.DoubleClick += new EventHandler(notifyIcon1_DoubleClick);
         }
+
         private void notifyIcon1_DoubleClick(object Sender, EventArgs e)
         {
             // Ação ao clicar duas vezes no ícone (por exemplo, mostrar o formulário Login novamente)
@@ -169,9 +170,5 @@ namespace FINAL_V2.UsuaryControl
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

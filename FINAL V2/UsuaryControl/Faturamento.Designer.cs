@@ -135,7 +135,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(229, 20);
             this.dateTimePicker1.TabIndex = 14;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+
             // 
             // button3
             // 
@@ -210,7 +210,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Faturamento";
             this.Size = new System.Drawing.Size(963, 478);
-            this.Load += new System.EventHandler(this.Faturamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

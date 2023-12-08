@@ -6,7 +6,9 @@ namespace FINAL_V2
     public partial class Desconto : Form
     {
         private int valorLabel = 0;
+
         private string desconto = "";
+
         public int ValorLabell
         {
             get { return valorLabel; }
@@ -25,8 +27,6 @@ namespace FINAL_V2
             
 
         }
-        
-
 
         private void Desconto_KeyDown(object sender, KeyEventArgs e)
         {
@@ -49,7 +49,6 @@ namespace FINAL_V2
                 this.Close();
             }
         }
-
 
         private void Desconto_KeyUp(object sender, KeyEventArgs e)
         {
@@ -86,16 +85,6 @@ namespace FINAL_V2
             label5.Text = desconto; // Atualiza o Label com o valor e o símbolo '%'
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Desconto_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
@@ -109,9 +98,5 @@ namespace FINAL_V2
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
