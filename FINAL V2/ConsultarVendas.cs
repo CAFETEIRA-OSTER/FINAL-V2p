@@ -39,9 +39,6 @@ namespace FINAL_V2
                 // Mensagem de depuração
                 Console.WriteLine("Tecla 'Esc' pressionada. Fechando o formulário.");
 
-                // Ou use MessageBox para uma mensagem visual
-                // MessageBox.Show("Tecla 'Esc' pressionada. Fechando o formulário.");
-
                 // Feche o formulário
                 this.Close();
             }
@@ -168,5 +165,9 @@ namespace FINAL_V2
             }
         }
 
+        private void ConsultarVendas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -20,7 +20,8 @@ namespace FINAL_V2.UsuaryControl
 
             // Inicialize o NotifyIcon na construção do Login
             notifyIcon1 = new NotifyIcon();
-            notifyIcon1.Icon = new System.Drawing.Icon(@"C:\ico\icons.ico");
+            string pastaRaiz = System.IO.Path.Combine(Application.StartupPath, "ico", "ico.ico");
+            notifyIcon1.Icon = new System.Drawing.Icon(pastaRaiz);
             notifyIcon1.Visible = true;
             notifyIcon1.DoubleClick += new EventHandler(notifyIcon1_DoubleClick);
         }

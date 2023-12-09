@@ -146,7 +146,7 @@ namespace FINAL_V2.RH
         private void CarregarImagem(string caminhoDaImagem)
         {
             // Caminho da pasta onde as fotos estão salvas.
-            string pastaFotos = @"C:\Users\Micro\Documents\fotosfun\";
+            string pastaFotos = System.IO.Path.Combine(Application.StartupPath, "fotosfun");
 
             // Construa o caminho completo da foto.
             string caminhoCompletoDaImagem = Path.Combine(pastaFotos, caminhoDaImagem);
